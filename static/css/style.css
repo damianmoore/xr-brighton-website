@@ -1,0 +1,164 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a {
+  outline: 0;
+}
+*:focus {
+  outline: none;
+}
+
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Crimson Text Regular'), local('CrimsonText-Regular'), url(../fonts/wlp2gwHKFkZgtmSR3NB0oRJfbwhT.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Crimson Text Bold'), local('CrimsonText-Bold'), url(../fonts/wlppgwHKFkZgtmSR3NB0oRJX1C1GDNNQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'FucXed';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/fucxedcaps-v2-webfont.woff2) format('woff2');
+}
+
+
+body {
+  background: #e6e6e6;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Crimson Text", Georgia, serif;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "FucXed", sans-serif;
+  margin: 0;
+}
+h1 {
+  font-size: 45px;
+}
+h2 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 25px;
+}
+
+main {
+  padding: 40px;
+}
+.hero {
+  background-image: url('../images/hero.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  margin-top: 75px;
+}
+
+header .page-header__wrap {
+  position: fixed;
+  z-index: 50;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: #21a73d;
+  padding: 0 20px;
+  display: flex;
+}
+header .logo {
+  text-decoration: none;
+  box-sizing: content-box;
+  padding: 10px 0;
+  display: inline-block;
+  width: 350px;
+}
+header .logo img {
+  height: 55px;
+}
+header .page-header__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+}
+header h1 {
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px 0 0 15px;
+  font-size: 34px;
+}
+header a {
+  color: #000;
+}
+
+
+footer {
+  background: #000;
+  color: #ddd;
+  padding: 10px;
+}
+footer .page-footer__column {
+  flex: 1 1 300px;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+}
+footer .social-nav {
+  justify-content: center;
+}
+.social-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.social-nav li {
+  margin-left: 5px;
+}
+.social-nav a {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 37px;
+  height: 37px;
+}
+.social-nav .facebook {
+  background-image: url("../images/icons/facebook.svg");
+}
+.social-nav .twitter {
+  background-image: url("../images/icons/twitter.svg");
+}
+.social-nav .insta {
+  background-image: url("../images/icons/instagram.svg");
+}
+.social-nav .yt {
+  background-image: url("../images/icons/youtube.svg");
+}
+.social-nav--light .facebook {
+  background-image: url("../images/icons/facebook-inverted.svg");
+}
+.social-nav--light .twitter {
+  background-image: url("../images/icons/twitter-inverted.svg");
+}
+.social-nav--light .insta {
+  background-image: url("../images/icons/instagram-inverted.svg");
+}
+.social-nav--light .yt {
+  background-image: url("../images/icons/youtube-inverted.svg");
+}
