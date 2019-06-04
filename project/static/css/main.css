@@ -241,7 +241,9 @@ main {
   background: white;
 }
 
-
+.cms-toolbar-expanded header .page-header__wrap {
+  margin-top: 46px;
+}
 header .page-header__wrap {
   position: fixed;
   z-index: 50;

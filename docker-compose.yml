@@ -4,9 +4,28 @@ services:
   website:
     container_name: xr-brighton-website
     build: .
+    environment:
+      ENV: dev
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: xrbrighton
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
     ports:
       - "8000:80"
     volumes:
       - ./index.html:/srv/index.html
-      - ./static:/srv/static
       - ./system:/srv/system
+      - ./project:/srv/project
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: xr-brighton-mysql
+    image: mysql:5.7
+    volumes:
+     - ./volumes/mysql:/var/lib/mysql
+    ports:
+     - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: xrbrighton

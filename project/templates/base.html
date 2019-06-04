@@ -1,17 +1,25 @@
+{% load cms_tags menu_tags sekizai_tags %}
+<!doctype html>
 <html>
   <head>
-    <link href="static/css/main.css" rel="stylesheet" />
-    <link rel="icon" href="static/images/cropped-favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" href="static/images/cropped-favicon-192x192.png" sizes="192x192" />
-    <title>Extinction Rebellion Brighton</title>
+    <title>Extinction Rebellion Brighton | {% block title %}{% endblock title %}</title>
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="icon" href="/static/images/cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="/static/images/cropped-favicon-192x192.png" sizes="192x192" />
+    {% render_block "css" %}
   </head>
+
   <body>
+    {% cms_toolbar %}
     <header class="page-header js-page-header ">
       <div class="page-header__wrap">
         <a class="logo" href="/" rel="home">
-          <img src="static/images/logo-black-linear.svg" alt="Extinction Rebellion"><h1>Brighton</h1>
+          <img src="/static/images/logo-black-linear.svg" alt="Extinction Rebellion"><h1>Brighton</h1>
         </a>
         <div class="page-header__content">
+          <ul class="nav">
+            {% show_menu 0 100 100 100 %}
+          </ul>
           <div class="social-nav social-nav">
             <ul aria-label="Social media links">
               <li><a href=" https://www.facebook.com/ExtinctionRebellion/" class="facebook" aria-label="facebook"></a></li>
@@ -27,6 +35,8 @@
     <div class="hero"></div>
 
     <main>
+      {% block content %}{% endblock content %}
+
       <div class="events-widget container events-widget--home">
         <h2 class="events-widget__title jumbo-title">Events</h2>
         <div class="events-list">
@@ -160,5 +170,7 @@
         </div>
       </div>
     </footer>
+
+    {% render_block "js" %}
   </body>
 </html>

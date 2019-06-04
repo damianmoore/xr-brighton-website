@@ -15,9 +15,16 @@ RUN apt-get update && \
 
 WORKDIR /srv
 
-COPY index.html /srv/index.html
-COPY static /srv/static
+COPY requirements.txt /srv/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY project /srv/project
 COPY system /srv/system
+COPY manage.py /srv/manage.py
+
+ENV PYTHONPATH /srv
+
+RUN python manage.py collectstatic --noinput --link
 
 CMD ./system/run.sh
 
