@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  website:
+    container_name: xr-brighton-website
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./index.html:/srv/index.html
+      - ./static:/srv/static
+      - ./system:/srv/system
