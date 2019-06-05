@@ -1,5 +1,7 @@
 from django.db import models
 
+from cms.models import CMSPlugin
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -14,7 +16,7 @@ class Category(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=50)
     start = models.DateTimeField()
-    finish = models.DateTimeField()
+    finish = models.DateTimeField(blank=True, null=True)
     location = models.TextField(blank=True)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
@@ -23,3 +25,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class EventPluginModel(CMSPlugin):
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
+    limit = models.IntegerField(null=True)
+    show_more = models.BooleanField(default=False)

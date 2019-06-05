@@ -1,0 +1,65 @@
+<div class="events-widget container events-widget--home">
+  <h2 class="events-widget__title jumbo-title">Events</h2>
+    <div class="events-list">
+      <ul class="item-list item-list--three">
+        {% for event in events %}
+          <li>
+            <article class="tease tease-event is-multi-day" id="tease-4624">
+              <a href="https://rebellion.earth/event/xr-hackney-weekly-meeting-2/">
+              <div class="tease-event__img" style="background-image: url('https://scontent.xx.fbcdn.net/v/t1.0-0/q92/p180x540/59320210_294148908190997_3296348809398845440_o.jpg?_nc_cat=108&amp;_nc_ht=scontent.xx&amp;oh=201970ca570286299de8d1c93cd88315&amp;oe=5D631AA0'); background-position: center;"></div>
+              <div class="tease-event__date-small">
+                <div>
+                  <span class="day">{{ event.start|date:"d" }}</span>
+                  <span class="month">{{ event.start|date:"M" }}</span>
+                </div>
+                {% if event.finish and event.finish.date != event.start.date %}
+                  <div class="divider"> – </div>
+                  <div>
+                    <span class="day">{{ event.finish|date:"d" }}</span>
+                    <span class="month">{{ event.finish|date:"M" }}</span>
+                  </div>
+                {% endif %}
+                </div>
+                <div class="tease-event__body">
+                  <h2>{{ event.name }}</h2>
+                  <div class="tease-event__details">
+                    <div>
+                      <div class="tease-event__date-long">
+                        <div>
+                          {% if event.finish and event.finish.date != event.start.date %}<strong>From:</strong><br>{% endif %}
+                          {{ event.start|date:"jS M Y" }}<br>
+                          <span class="start">{{ event.start|date:"H:i" }}{% if event.finish and event.finish.date == event.start.date %} - {{ event.finish|date:"H:i" }}{% endif %}</span>
+                        </div>
+                        {% if event.finish and event.finish.date != event.start.date %}
+                          <div class="divider">–</div>
+                          <div>
+                            <strong>Until:</strong><br>
+                            {{ event.finish|date:"jS M Y" }}<br>
+                            <span class="start">{{ event.finish|date:"H:i" }}</span>
+                          </div>
+                        {% endif %}
+                      </div>
+                      {% if event.location %}
+                        <div class="tease-event__location">
+                          {{ event.location }}
+                        </div>
+                      {% endif %}
+                      {% if event.category.name %}
+                        <div class="tags tags--post-event">
+                          <span>{{ event.category.name }}</span>
+                        </div>
+                      {% endif %}
+                    </div>
+                    <div class="tease-event__btn">
+                      <span class="btn btn--primary-dark">Find out more</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
