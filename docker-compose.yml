@@ -16,6 +16,7 @@ services:
       - ./index.html:/srv/index.html
       - ./system:/srv/system
       - ./project:/srv/project
+      - ./volumes/media:/srv/media
     depends_on:
       - mysql
 

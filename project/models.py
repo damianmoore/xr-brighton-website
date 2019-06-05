@@ -1,6 +1,7 @@
 from django.db import models
 
 from cms.models import CMSPlugin
+from filer.fields.image import FilerImageField
 
 
 class Category(models.Model):
@@ -22,6 +23,7 @@ class Event(models.Model):
     longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     description = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
+    image = FilerImageField(null=True, blank=True, related_name='event_image')
 
     def __str__(self):
         return self.name

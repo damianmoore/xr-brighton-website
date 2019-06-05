@@ -24,6 +24,7 @@ COPY manage.py /srv/manage.py
 
 ENV PYTHONPATH /srv
 
+RUN mkdir /srv/media
 RUN python manage.py collectstatic --noinput --link
 
 CMD ./system/run.sh

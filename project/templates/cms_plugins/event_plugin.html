@@ -1,3 +1,4 @@
+{% load thumbnail %}
 <div class="events-widget container events-widget--home">
   <h2 class="events-widget__title jumbo-title">Events</h2>
     <div class="events-list">
@@ -5,8 +6,8 @@
         {% for event in events %}
           <li>
             <article class="tease tease-event is-multi-day" id="tease-4624">
-              <a href="https://rebellion.earth/event/xr-hackney-weekly-meeting-2/">
-              <div class="tease-event__img" style="background-image: url('https://scontent.xx.fbcdn.net/v/t1.0-0/q92/p180x540/59320210_294148908190997_3296348809398845440_o.jpg?_nc_cat=108&amp;_nc_ht=scontent.xx&amp;oh=201970ca570286299de8d1c93cd88315&amp;oe=5D631AA0'); background-position: center;"></div>
+              <a href="#">
+              <div class="tease-event__img" style="background-image: url('{% thumbnail event.image 800x800 quality=60 %}')"></div>
               <div class="tease-event__date-small">
                 <div>
                   <span class="day">{{ event.start|date:"d" }}</span>

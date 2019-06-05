@@ -190,6 +190,7 @@ main {
   overflow: hidden;
   background-size: cover;
   background-color: #21a73d;
+  background-position: center;
 }
 .is-multi-day .tease-event__date-small {
   display: flex;

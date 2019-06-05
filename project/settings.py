@@ -28,7 +28,7 @@ SECRET_KEY = 'lu8ug35p3^=gruys#!3f=7ktbekuq45t)0+y)goyhri774z&rb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['xrbrighton.epixstudios.co.uk']
 
 
 # Application definition
