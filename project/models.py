@@ -25,6 +25,9 @@ class Event(models.Model):
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
     image = FilerImageField(null=True, blank=True, related_name='event_image')
 
+    class Meta:
+        ordering = ('-start',)
+
     def __str__(self):
         return self.name
 
