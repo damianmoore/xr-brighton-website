@@ -281,6 +281,24 @@ header h1 {
 }
 header a {
   color: #000;
+  text-decoration: none;
+}
+header ul.nav {
+  font-family: "FucXed", sans-serif;
+  margin: 0 1em 0 0;
+  padding: 0;
+}
+header ul.nav li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 0 0 0.5em;
+}
+header ul.nav li a {
+  border-bottom: 0 solid #000;
+  transition: all 200ms;
+}
+header ul.nav li a:hover {
+  border-bottom: 3px solid #000;
 }
 
 
