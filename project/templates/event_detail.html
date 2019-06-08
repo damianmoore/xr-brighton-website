@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load cms_tags thumbnail %}
+
+{% block title %}{{ event.name }}{% endblock title %}
+
+{% block content %}
+  <h1>{{ event.name }}</h1>
+  <h3>{{ event.location }}</h3>
+  <img src="{% thumbnail event.image 800x800 quality=60 %}" class="event-detail-image" />
+  {{ description|safe }}
+{% endblock content %}
