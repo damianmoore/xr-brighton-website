@@ -357,3 +357,9 @@ footer .social-nav {
 .social-nav--light .yt {
   background-image: url("../images/icons/youtube-inverted.svg");
 }
+
+.event-detail-image {
+  width: 400px;
+  float: right;
+  margin: 0 0 40px 40px;
+}

@@ -22,5 +22,6 @@ django-sekizai>=0.9
 six
 pytz
 
-mysqlclient
 gunicorn
+mysqlclient
+Markdown

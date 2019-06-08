@@ -21,12 +21,7 @@
             {% show_menu 0 100 100 100 %}
           </ul>
           <div class="social-nav social-nav">
-            <ul aria-label="Social media links">
-              <li><a href="" class="facebook" aria-label="facebook"></a></li>
-              <li><a href="" class="twitter" aria-label="twitter"></a></li>
-              <li><a href="" class="insta" aria-label="instagram"></a></li>
-              <li><a href="" class="yt" aria-label="youtube"></a></li>
-            </ul>
+            {% include "snippets/social_nav.html" %}
           </div>
         </div>
       </div>
@@ -41,12 +36,7 @@
     <footer>
       <div class="page-footer__column">
         <div class="social-nav social-nav--light">
-          <ul aria-label="Social media links">
-            <li><a href="" class="facebook" aria-label="facebook"></a></li>
-            <li><a href="" class="twitter" aria-label="twitter"></a></li>
-            <li><a href="" class="insta" aria-label="instagram"></a></li>
-            <li><a href="" class="yt" aria-label="youtube"></a></li>
-          </ul>
+          {% include "snippets/social_nav.html" %}
         </div>
       </div>
     </footer>

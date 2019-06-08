@@ -6,7 +6,7 @@
         {% for event in events %}
           <li>
             <article class="tease tease-event is-multi-day" id="tease-4624">
-              <a href="#">
+              <a href="/event/{{ event.generate_slug }}/">
               <div class="tease-event__img" style="background-image: url('{% thumbnail event.image 800x800 quality=60 %}')"></div>
               <div class="tease-event__date-small">
                 <div>
