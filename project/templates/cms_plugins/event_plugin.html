@@ -1,6 +1,6 @@
 {% load thumbnail %}
 <div class="events-widget container events-widget--home">
-  <h2 class="events-widget__title jumbo-title">Events</h2>
+  <h1 class="events-widget__title jumbo-title">Events</h1>
     <div class="events-list">
       <ul class="item-list item-list--three">
         {% for event in events %}
@@ -22,7 +22,7 @@
                 {% endif %}
                 </div>
                 <div class="tease-event__body">
-                  <h1>{{ event.name }}</h1>
+                  <h2>{{ event.name }}</h2>
                   <div class="tease-event__details">
                     <div>
                       <div class="tease-event__date-long">
