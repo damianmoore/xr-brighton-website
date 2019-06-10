@@ -259,7 +259,7 @@ header .page-header__wrap {
 header .logo {
   text-decoration: none;
   box-sizing: content-box;
-  padding: 10px 0;
+  padding: 10px 0 5px;
   display: inline-block;
   width: 350px;
 }
