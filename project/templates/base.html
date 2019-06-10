@@ -1,9 +1,9 @@
-{% load cms_tags menu_tags sekizai_tags %}
+{% load cms_tags menu_tags sekizai_tags version %}
 <!doctype html>
 <html>
   <head>
     <title>Extinction Rebellion Brighton | {% block title %}{% endblock title %}</title>
-    <link href="/static/css/main.css" rel="stylesheet" />
+    <link href="/static/css/main.css?{% version_date %}" rel="stylesheet" />
     <link rel="icon" href="/static/images/cropped-favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="/static/images/cropped-favicon-192x192.png" sizes="192x192" />
     {% render_block "css" %}

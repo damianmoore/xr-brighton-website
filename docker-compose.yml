@@ -17,6 +17,7 @@ services:
       - ./system:/srv/system
       - ./project:/srv/project
       - ./volumes/media:/srv/media
+      - ./.git:/srv/.git
     depends_on:
       - mysql
 

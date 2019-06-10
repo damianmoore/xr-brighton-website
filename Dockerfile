@@ -21,6 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY project /srv/project
 COPY system /srv/system
 COPY manage.py /srv/manage.py
+COPY .git /srv/.git
 
 ENV PYTHONPATH /srv
 
