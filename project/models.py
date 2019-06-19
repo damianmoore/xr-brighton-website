@@ -34,7 +34,7 @@ class Category(VersionedModel):
 
 class Event(VersionedModel):
     name        = models.CharField(max_length=100)
-    slug        = models.CharField(max_length=60, blank=True, null=True)
+    slug        = models.CharField(max_length=110, blank=True, null=True)
     start       = models.DateTimeField()
     finish      = models.DateTimeField(blank=True, null=True)
     location    = models.TextField(blank=True)
