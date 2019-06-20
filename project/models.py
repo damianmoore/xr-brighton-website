@@ -41,8 +41,9 @@ class Event(VersionedModel):
     latitude    = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     longitude   = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     description = models.TextField(blank=True)
-    category    = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
-    image       = FilerImageField(null=True, blank=True, related_name='event_image')
+    category    = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
+    image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='event_image')
+    promote     = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-start',)

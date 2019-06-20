@@ -76,12 +76,13 @@ main h1, main h2, main h3, main h4, main h5, main h6 {
 main p a {
   text-decoration: none;
   background-color: transparent;
-  border-bottom: 2px solid rgba(33, 167, 61, 0.5);
-  box-shadow: inset 0 -2px 0 rgba(33, 167, 61, 0.5);
-  -webkit-box-shadow: inset 0 -2px 0 rgba(33, 167, 61, 0.5);
+  border-bottom: 2px solid rgba(33, 167, 61, 1);
+  box-shadow: inset 0 -2px 0 rgba(33, 167, 61, 1);
+  -webkit-box-shadow: inset 0 -2px 0 rgba(33, 167, 61, 1);
   transition: 250ms ease;
 }
 main p a:hover {
+  border-bottom: 2px solid rgba(33, 167, 61, 0.5);
   box-shadow: inset 0 -50px 0 rgba(33, 167, 61, 0.5);
   -webkit-box-shadow: inset 0 -22px 0 rgba(33, 167, 61, 0.5);
 }
@@ -202,7 +203,7 @@ main {
   text-decoration: none;
   width: 100%;
 }
-.tease-event a:hover, .tease-event a:focus {
+.tease-event a:hover, .tease-event a:focus, article.promote a:hover .tease-event__body {
   background: black;
   color: #ddd;
 }
@@ -261,6 +262,10 @@ main {
 .tease-event a:hover .btn, .tease-event a:hover .tags span, .tease-event a:focus .btn, .tease-event a:focus .tags span {
   color: black;
   background: white;
+}
+article.promote .tease-event__body {
+  background: #21a73d;
+  color: #fff;
 }
 
 .cms-toolbar-expanded header .page-header__wrap {

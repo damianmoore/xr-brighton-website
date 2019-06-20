@@ -6,6 +6,23 @@
 {% block content %}
   <h1>{{ event.name }}</h1>
   <h3>{{ event.location }}</h3>
+  <div class="tease-event__date-long">
+    <div>
+      {% if event.finish and event.finish.date != event.start.date %}<strong>From:</strong><br>{% endif %}
+      {{ event.start|date:"jS M Y" }}
+      <span class="start">{{ event.start|date:"H:i" }}{% if event.finish and event.finish.date == event.start.date %} - {{ event.finish|date:"H:i" }}{% endif %}</span>
+    </div>
+    {% if event.finish and event.finish.date != event.start.date %}
+    <div class="divider">–</div>
+    <div>
+      <strong>Until:</strong><br>
+      {{ event.finish|date:"jS M Y" }}
+      <span class="start">{{ event.finish|date:"H:i" }}</span>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <br/>
   <img src="{% thumbnail event.image 800x800 quality=60 %}" class="event-detail-image" />
   {{ description|safe }}
 {% endblock content %}

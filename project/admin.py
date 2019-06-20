@@ -37,6 +37,6 @@ class EventAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'start', 'finish', 'location', 'latitude', 'longitude', 'description', 'category', 'image',),
+            'fields': ('name', 'start', 'finish', 'location', 'description', 'category', 'image', 'promote', 'latitude', 'longitude',),
         }),
     ) + VersionedAdmin.fieldsets
