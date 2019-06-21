@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 from django.db import models
 from django.utils.text import slugify
+from django.utils import timezone
 
 from cms.models import CMSPlugin
 from filer.fields.image import FilerImageField
@@ -31,6 +32,12 @@ class Category(VersionedModel):
     def __str__(self):
         return self.name
 
+class EventManager(models.Manager):
+    def in_future(self):
+        return self.get_queryset().filter(start__gte=timezone.now())
+
+    def in_past(self):
+        return self.get_queryset().filter(start__lt=timezone.now())
 
 class Event(VersionedModel):
     name        = models.CharField(max_length=100)
@@ -44,6 +51,8 @@ class Event(VersionedModel):
     category    = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='event_image')
     promote     = models.BooleanField(default=False)
+
+    objects = EventManager()
 
     class Meta:
         ordering = ('-start',)
@@ -59,6 +68,16 @@ class Event(VersionedModel):
     def generate_slug(self):
         datestr = self.start.strftime('%Y%m%d')
         return f'{slugify(self.name)}-{datestr}'
+
+    @property
+    def in_future(self):
+        if self.start >= timezone.now():
+            return True
+        return False
+
+    @property
+    def in_past(self):
+        return not self.in_future
 
 
 class EventPluginModel(CMSPlugin):
