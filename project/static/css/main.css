@@ -326,7 +326,9 @@ header ul.nav li a {
 header ul.nav li a:hover {
   border-bottom: 3px solid #000;
 }
-
+header .social-nav {
+  margin: 0 1em 0 0;
+}
 
 footer {
   background: #000;

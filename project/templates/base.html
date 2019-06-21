@@ -41,6 +41,14 @@
           <div class="social-nav social-nav">
             {% include "snippets/social_nav.html" %}
           </div>
+          <div class="donate donate--head">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_donations" />
+              <input type="hidden" name="business" value="xr_brighton_finance@protonmail.com" />
+              <input type="hidden" name="currency_code" value="GBP" />
+              <input type="submit" value="Donate" class="btn btn--primary-dark"/>
+            </form>
+          </div>
         </div>
       </div>
     </header>
