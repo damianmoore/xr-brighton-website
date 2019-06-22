@@ -53,7 +53,7 @@ class EventFuturePastFilter(admin.SimpleListFilter):
 
 @admin.register(Event)
 class EventAdmin(VersionedAdmin):
-    list_display = ('name', 'start', 'category', 'future_past')
+    list_display = ('name', 'date_short', 'category', 'future_past')
     list_ordering = ('-start',)
     list_filter = (EventFuturePastFilter, 'category')
     search_fields = ('name', 'location', 'description', 'category__name')
@@ -71,3 +71,10 @@ class EventAdmin(VersionedAdmin):
         return '<span style="color: #a00">PAST</span>'
     future_past.allow_tags = True
     future_past.short_description = 'Future/Past'
+
+    def date_short(self, obj):
+        date_str = obj.start.strftime("%d %b %Y")
+        if obj.finish and obj.finish.strftime("%d %b %Y") != obj.start.strftime("%d %b %Y"):
+            date_str += ' – {}'.format(obj.finish.strftime("%d %b %Y"))
+        return date_str
+    date_short.short_description = 'Date'
