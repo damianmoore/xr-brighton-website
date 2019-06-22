@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import Q
 from django.utils.text import slugify
@@ -9,18 +10,23 @@ from cms.models import CMSPlugin
 from filer.fields.image import FilerImageField
 
 
+User = get_user_model()
+
+
 class VersionedModel(models.Model):
-    created = models.DateTimeField(blank=True, null=True)
-    updated = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name='+')
+    updated_at = models.DateTimeField(blank=True, null=True)
+    updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name='+')
 
     class Meta:
         abstract = True
 
     def save(self, *args, **kwargs):
         now = datetime.now()
-        if not self.created:
-            self.created = now
-        self.updated = now
+        if not self.created_at:
+            self.created_at = now
+        self.updated_at = now
         super(VersionedModel, self).save()
 
 

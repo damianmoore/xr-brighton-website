@@ -10,10 +10,16 @@ class VersionedAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Created/Updated', {
             'classes': ('collapse',),
-            'fields': ('created', 'updated',)
+            'fields': ('created_at', 'created_by', 'updated_at', 'updated_by')
         }),
     )
-    readonly_fields = ['created', 'updated']
+    readonly_fields = ['created_at', 'created_by', 'updated_at', 'updated_by']
+
+    def save_model(self, request, obj, form, change):
+        obj.updated_by = request.user
+        if not obj.id:
+            obj.created_by = request.user
+        super(VersionedAdmin, self).save_model(request, obj, form, change)
 
 
 @admin.register(Category)
