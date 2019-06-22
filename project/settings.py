@@ -45,7 +45,7 @@ ROOT_URLCONF = 'project.urls'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-GB'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/London'
 
@@ -143,7 +143,7 @@ INSTALLED_APPS = [
 
 LANGUAGES = (
     ## Customize this
-    ('en-GB', gettext('en')),
+    ('en', gettext('en')),
 )
 
 CMS_LANGUAGES = {
