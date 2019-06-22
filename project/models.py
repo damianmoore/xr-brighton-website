@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 from django.db import models
+from django.db.models import Q
 from django.utils.text import slugify
 from django.utils import timezone
 
@@ -34,10 +35,10 @@ class Category(VersionedModel):
 
 class EventManager(models.Manager):
     def in_future(self):
-        return self.get_queryset().filter(start__gte=timezone.now())
+        return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()))
 
     def in_past(self):
-        return self.get_queryset().filter(start__lt=timezone.now())
+        return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__lt=timezone.now()))
 
 class Event(VersionedModel):
     name        = models.CharField(max_length=100)
@@ -71,7 +72,7 @@ class Event(VersionedModel):
 
     @property
     def in_future(self):
-        if self.start >= timezone.now():
+        if self.start >= timezone.now() or self.finish >= timezone.now():
             return True
         return False
 
