@@ -228,6 +228,19 @@ main {
   font-family: "FucXed",sans-serif;
   line-height: 1.1;
 }
+.tease-event__date-small .day {
+  font-size: 2.0625em;
+  display: block;
+}
+.tease-event__date-small .month {
+  font-size: 1.3125em;
+  display: block;
+}
+.tease-event__date-small .divider {
+  margin: 0 0.5em;
+  align-self: center;
+}
+
 .tease-event__date-long > * {
   margin: 0 1em 0.5em 0;
 }
@@ -240,6 +253,7 @@ main {
   display: flex;
   align-items: center;
 }
+
 .tease-event__location {
   font-size: 1.25em;
   line-height: 1.2;

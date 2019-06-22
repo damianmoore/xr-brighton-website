@@ -7,19 +7,19 @@
           <li>
             <article class="tease tease-event is-multi-day{% if event.promote %} promote{% endif %}" id="tease-4624">
               <a href="/event/{{ event.generate_slug }}/">
-              <div class="tease-event__img" style="background-image: url('{% thumbnail event.image 800x800 quality=60 %}')"></div>
-              <div class="tease-event__date-small">
-                <div>
-                  <span class="day">{{ event.start|date:"d" }}</span>
-                  <span class="month">{{ event.start|date:"M" }}</span>
-                </div>
-                {% if event.finish and event.finish.date != event.start.date %}
-                  <div class="divider"> – </div>
+                <div class="tease-event__img" style="background-image: url('{% thumbnail event.image 800x800 quality=60 %}')"></div>
+                <div class="tease-event__date-small">
                   <div>
-                    <span class="day">{{ event.finish|date:"d" }}</span>
-                    <span class="month">{{ event.finish|date:"M" }}</span>
+                    <span class="day">{{ event.start|date:"d" }}</span>
+                    <span class="month">{{ event.start|date:"M" }}</span>
                   </div>
-                {% endif %}
+                  {% if event.finish and event.finish.date != event.start.date %}
+                    <div class="divider"> – </div>
+                    <div>
+                      <span class="day">{{ event.finish|date:"d" }}</span>
+                      <span class="month">{{ event.finish|date:"M" }}</span>
+                    </div>
+                  {% endif %}
                 </div>
                 <div class="tease-event__body">
                   <h2>{{ event.name }}</h2>
