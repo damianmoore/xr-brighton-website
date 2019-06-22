@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event
+from .models import Category, Event, Article
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -78,3 +78,17 @@ class EventAdmin(VersionedAdmin):
             date_str += ' – {}'.format(obj.finish.strftime("%d %b %Y"))
         return date_str
     date_short.short_description = 'Date'
+
+
+@admin.register(Article)
+class ArticleAdmin(VersionedAdmin):
+    list_display = ('name', 'event')
+    list_ordering = ('-date')
+    search_fields = ('name', 'event__name', 'source_name', 'source_url', 'description')
+    raw_id_fields = ('event', )
+
+    fieldsets = (
+        (None, {
+            'fields': ('event', 'name', 'slug', 'source', 'source_name', 'source_url', 'date', 'description', 'image'),
+        }),
+    ) + VersionedAdmin.fieldsets

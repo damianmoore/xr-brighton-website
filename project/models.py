@@ -91,3 +91,47 @@ class EventPluginModel(CMSPlugin):
     category    = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
     limit       = models.IntegerField(null=True)
     show_more   = models.BooleanField(default=False)
+
+
+PRESS_ARTICLE_SOURCES = (
+    ('I', 'Internal'),
+    ('E', 'External'),
+)
+
+
+class Article(VersionedModel):
+    event       = models.ForeignKey(Event, on_delete=models.SET_NULL, blank=True, null=True)
+    name        = models.CharField(max_length=100, blank=True, null=True, help_text='Optional - event name will be used if blank')
+    slug        = models.CharField(max_length=110, blank=True, null=True)
+    source      = models.CharField(max_length=2, choices=PRESS_ARTICLE_SOURCES)
+    source_name = models.CharField(max_length=100, blank=True, null=True, help_text='Name of newspaper or website')
+    source_url  = models.URLField(blank=True, null=True, help_text='Link to news article online')
+    date        = models.DateField()
+    description = models.TextField(blank=True)
+    image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='article_image')
+
+    class Meta:
+        ordering = ('-date',)
+
+    def __str__(self):
+        return self.article_name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self.generate_slug()
+        super(Article, self).save()
+
+    @property
+    def article_name(self):
+        if not self.name and self.event:
+            return self.event.name
+        return self.name
+
+    def generate_slug(self):
+        datestr = self.date.strftime('%Y%m%d')
+        return f'{slugify(self.article_name)}-{datestr}'
+
+
+class ArticlePluginModel(CMSPlugin):
+    limit       = models.IntegerField(null=True)
+    show_more   = models.BooleanField(default=False)

@@ -4,7 +4,7 @@ import re
 from django.shortcuts import render
 import markdown
 
-from .models import Event
+from .models import Event, Article
 
 
 def event_detail(request, slug):
@@ -16,5 +16,18 @@ def event_detail(request, slug):
 
     return render(request, 'event_detail.html', {
         'event': event,
+        'description': description,
+    })
+
+
+def article_detail(request, slug):
+    article = Article.objects.get(slug=slug)
+
+    regex = r'http[s]*:\/\/[\w\S]+[\w\/]+'
+    description = re.sub(regex, lambda url: '[{0}]({0})'.format(url.group()), article.description)
+    description = markdown.markdown(description)
+
+    return render(request, 'article_detail.html', {
+        'article': article,
         'description': description,
     })
