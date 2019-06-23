@@ -92,7 +92,7 @@ class ArticleImageInline(admin.TabularInline):
 
 @admin.register(Article)
 class ArticleAdmin(VersionedAdmin):
-    list_display = ('name', 'event')
+    list_display = ('article_name', 'date_short', 'event', 'num_photos')
     list_ordering = ('-date')
     search_fields = ('name', 'event__name', 'source_name', 'source_url', 'description')
     raw_id_fields = ('event', )
@@ -106,3 +106,7 @@ class ArticleAdmin(VersionedAdmin):
         ArticleSourceInline,
         ArticleImageInline,
     ]
+
+    def date_short(self, obj):
+        return obj.date.strftime("%d %b %Y")
+    date_short.short_description = 'Date'

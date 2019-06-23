@@ -124,6 +124,10 @@ class Article(VersionedModel):
             return self.event.name
         return self.name
 
+    @property
+    def num_photos(self):
+        return self.images.count()
+
     def generate_slug(self):
         datestr = self.date.strftime('%Y%m%d')
         return f'{slugify(self.article_name)}-{datestr}'
