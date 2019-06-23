@@ -15,11 +15,13 @@
       </div>
       <br/>
       {{ description|safe }}
-      {% if article.source_url %}
-        <br/>
-        <a href="{{ article.source_url }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">
-          Read more{% if article.source_name %} @ {{ article.source_name }}{% endif %}
-        </a>
+      {% if article.sources.all %}
+        {% for source in article.sources.all %}
+          <br/>
+          <a href="{{ source.url }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">
+            Read more{% if source.name %} @ {{ source.name }}{% endif %}
+          </a>
+        {% endfor %}
       {% endif %}
     </div>
   </article>

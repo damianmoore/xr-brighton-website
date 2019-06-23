@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event, Article
+from .models import Category, Event, Article, ArticleSource
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -80,6 +80,11 @@ class EventAdmin(VersionedAdmin):
     date_short.short_description = 'Date'
 
 
+class ArticleSourceInline(admin.TabularInline):
+    model = ArticleSource
+    exclude = ('created_at', 'created_by', 'updated_at', 'updated_by')
+
+
 @admin.register(Article)
 class ArticleAdmin(VersionedAdmin):
     list_display = ('name', 'event')
@@ -89,6 +94,9 @@ class ArticleAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('event', 'name', 'slug', 'source', 'source_name', 'source_url', 'date', 'description', 'image'),
+            'fields': ('event', 'name', 'slug', 'date', 'description', 'image'),
         }),
     ) + VersionedAdmin.fieldsets
+    inlines = [
+        ArticleSourceInline,
+    ]

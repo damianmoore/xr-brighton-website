@@ -17,11 +17,11 @@
                 <div class="tease-event__body">
                   <h2>{{ article.name }}</h2>
                   <div class="tease-event__details">
-                    {% if article.source_name %}
-                      <div class="tags tags--post-event">
-                        <span>{{ article.source_name }}</span>
-                      </div>
-                    {% endif %}
+                    <div class="tags tags--post-event">
+                      {% for source in article.sources.all %}
+                        <span>{{ source.name }}</span>
+                      {% endfor %}
+                    </div>
                     <div class="tease-event__btn">
                       <span class="btn btn--primary-dark">Find out more</span>
                     </div>
