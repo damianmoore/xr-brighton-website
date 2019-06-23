@@ -136,8 +136,17 @@ class ArticlePluginModel(CMSPlugin):
 
 class ArticleSource(VersionedModel):
     article     = models.ForeignKey(Article, related_name='sources')
-    name = models.CharField(max_length=100, blank=True, null=True, help_text='Name of newspaper or website')
-    url  = models.URLField(blank=True, null=True, help_text='Link to news article online')
+    name        = models.CharField(max_length=100, blank=True, null=True, help_text='Name of newspaper or website')
+    url         = models.URLField(blank=True, null=True, help_text='Link to news article online')
 
     def __str__(self):
         return self.name
+
+
+class ArticleImage(VersionedModel):
+    article     = models.ForeignKey(Article, related_name='images')
+    image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
+    index       = models.IntegerField(null=True, default=0)
+
+    class Meta:
+        ordering = ('index',)

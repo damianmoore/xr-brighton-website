@@ -436,3 +436,16 @@ footer .social-nav {
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+.gallery-thumbnails {
+  background: #000;
+  margin: 40px 0;
+}
+.gallery-thumbnails .thumbnail {
+  width: 150px;
+  height: 150px;
+  background-position: center;
+  background-size: cover;
+  display: inline-block;
+  margin: 5px 0 0 5px;
+}

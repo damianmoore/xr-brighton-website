@@ -15,6 +15,11 @@
       </div>
       <br/>
       {{ description|safe }}
+      {% if article.images.all %}
+        <div class="gallery-thumbnails">
+          {% for image in article.images.all %}<div class="thumbnail" style="background-image: url({% thumbnail image.image 300x300 quality=60 %})"></div>{% endfor %}
+        </div>
+      {% endif %}
       {% if article.sources.all %}
         {% for source in article.sources.all %}
           <br/>
