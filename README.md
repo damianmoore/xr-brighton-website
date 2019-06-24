@@ -9,3 +9,8 @@ The site is based on the Django framework and Django CMS. Docker is used for eas
 
     make build
     make start
+
+
+## Resizing photos for uploading
+
+    mogrify -resize 1920x1920 -quality 60 *.jpg
