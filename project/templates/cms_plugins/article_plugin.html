@@ -1,40 +1,38 @@
 {% load thumbnail %}
 <div class="events-widget container events-widget--home full-width">
-  <h1 class="events-widget__title jumbo-title">News</h1>
-    <div class="events-list">
-      <ul class="item-list item-list--three">
-        {% for article in articles %}
-          <li>
-            <article class="tease tease-event is-multi-day{% if article.promote %} promote{% endif %}" id="tease-4624">
-              <a href="/news/{{ article.generate_slug }}/">
-                <div class="tease-event__img" style="background-image: url('{% thumbnail article.image 800x800 quality=60 %}')"></div>
-                <div class="tease-event__date-small">
-                  <div>
-                    <span class="day">{{ article.date|date:"d" }}</span>
-                    <span class="month">{{ article.date|date:"M" }}</span>
+  <div class="events-list">
+    <ul class="item-list item-list--three">
+      {% for article in articles %}
+        <li>
+          <article class="tease tease-event is-multi-day{% if article.promote %} promote{% endif %}" id="tease-4624">
+            <a href="/news/{{ article.generate_slug }}/">
+              <div class="tease-event__img" style="background-image: url('{% thumbnail article.image 800x800 quality=60 %}')"></div>
+              <div class="tease-event__date-small">
+                <div>
+                  <span class="day">{{ article.date|date:"d" }}</span>
+                  <span class="month">{{ article.date|date:"M" }}</span>
+                </div>
+              </div>
+              <div class="tease-event__body">
+                <h2>{{ article.article_name }}</h2>
+                <div class="tease-event__details">
+                  {% if article.num_photos %}
+                    <p>{{ article.num_photos }} photos</p>
+                  {% endif %}
+                  <div class="tags tags--post-event">
+                    {% for source in article.sources.all %}
+                      <span>{{ source.name }}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="tease-event__btn">
+                    <span class="btn btn--primary-dark">Find out more</span>
                   </div>
                 </div>
-                <div class="tease-event__body">
-                  <h2>{{ article.article_name }}</h2>
-                  <div class="tease-event__details">
-                    {% if article.num_photos %}
-                      <p>{{ article.num_photos }} photos</p>
-                    {% endif %}
-                    <div class="tags tags--post-event">
-                      {% for source in article.sources.all %}
-                        <span>{{ source.name }}</span>
-                      {% endfor %}
-                    </div>
-                    <div class="tease-event__btn">
-                      <span class="btn btn--primary-dark">Find out more</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+              </div>
+            </a>
+          </article>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 </div>

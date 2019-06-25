@@ -436,6 +436,11 @@ footer .social-nav {
   margin-left: -50vw;
   margin-right: -50vw;
 }
+.notice {
+  padding: 20px;
+  font-size: 1.2em;
+  text-align: center;
+}
 
 .gallery-thumbnails {
   background: #000;
