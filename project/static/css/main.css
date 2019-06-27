@@ -99,6 +99,9 @@ main .hero {
   background-size: cover;
   position: relative;
 }
+main .hero-large {
+  height: 50vh;
+}
 main article .content {
   max-width: 800px;
   padding: 60px 0 40px 0;
