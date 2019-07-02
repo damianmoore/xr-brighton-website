@@ -78,7 +78,7 @@ class Event(VersionedModel):
 
     @property
     def in_future(self):
-        if self.start >= timezone.now() or self.finish >= timezone.now():
+        if self.start >= timezone.now() or (self.finish and self.finish >= timezone.now()):
             return True
         return False
 
