@@ -170,6 +170,37 @@ main article .content {
   height: 300px;
   margin-top: 75px;
 }
+.events-filters {
+  text-align: right;
+  padding: 0 40px;
+  background: #fff;
+  margin-bottom: 40px;
+}
+.events-filters ul {
+  display: inline-block;
+  padding: 0 0 0 10px;
+}
+.events-filters li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.events-filters .selected {
+  font-weight: bold;
+  cursor: default;
+}
+.events-filters li a {
+  text-decoration: none;
+  background-color: transparent;
+  border-bottom: 2px solid rgba(33, 167, 61, 1);
+  box-shadow: inset 0 -2px 0 rgba(33, 167, 61, 1);
+  -webkit-box-shadow: inset 0 -2px 0 rgba(33, 167, 61, 1);
+  transition: 250ms ease;
+}
+.events-filters li a:hover {
+  border-bottom: 2px solid rgba(33, 167, 61, 0.5);
+  box-shadow: inset 0 -50px 0 rgba(33, 167, 61, 0.5);
+  -webkit-box-shadow: inset 0 -22px 0 rgba(33, 167, 61, 0.5);
+}
 .events-widget {
   text-align: center;
   padding: 0 40px;

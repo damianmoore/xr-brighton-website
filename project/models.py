@@ -89,9 +89,10 @@ class Event(VersionedModel):
 
 
 class EventPluginModel(CMSPlugin):
-    category    = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
-    limit       = models.IntegerField(null=True)
-    show_more   = models.BooleanField(default=False)
+    category                = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
+    limit                   = models.IntegerField(null=True)
+    show_more               = models.BooleanField(default=False)
+    show_category_filters   = models.BooleanField(default=True)
 
 
 PRESS_ARTICLE_SOURCES = (
