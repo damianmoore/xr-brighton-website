@@ -128,7 +128,10 @@ class Article(VersionedModel):
 
     @property
     def num_photos(self):
-        return self.gallery_images.count()
+        gallery_images = self.gallery_images
+        if not gallery_images:
+            return 0
+        return gallery_images.count()
 
     def generate_slug(self):
         datestr = self.date.strftime('%Y%m%d')
