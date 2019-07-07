@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event, Article, ArticleSource, ArticleImage
+from .models import Category, Event, Article, ArticleSource
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -85,11 +85,6 @@ class ArticleSourceInline(admin.TabularInline):
     exclude = ('created_at', 'created_by', 'updated_at', 'updated_by')
 
 
-class ArticleImageInline(admin.TabularInline):
-    model = ArticleImage
-    exclude = ('created_at', 'created_by', 'updated_at', 'updated_by')
-
-
 @admin.register(Article)
 class ArticleAdmin(VersionedAdmin):
     list_display = ('article_name', 'date_short', 'event', 'num_photos')
@@ -99,12 +94,11 @@ class ArticleAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('event', 'name', 'slug', 'date', 'description', 'image'),
+            'fields': ('event', 'name', 'slug', 'date', 'description', 'image', 'gallery'),
         }),
     ) + VersionedAdmin.fieldsets
     inlines = [
         ArticleSourceInline,
-        ArticleImageInline,
     ]
 
     def date_short(self, obj):

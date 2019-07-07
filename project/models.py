@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import os
 
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -106,6 +107,7 @@ class Article(VersionedModel):
     date        = models.DateField()
     description = models.TextField(blank=True)
     image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='article_image')
+    gallery     = models.BooleanField(default=True, help_text='Pull in all images that are in the same folder as the article image and display as a gallery')
 
     class Meta:
         ordering = ('-date',)
@@ -126,11 +128,17 @@ class Article(VersionedModel):
 
     @property
     def num_photos(self):
-        return self.images.count()
+        return self.gallery_images.count()
 
     def generate_slug(self):
         datestr = self.date.strftime('%Y%m%d')
         return f'{slugify(self.article_name)}-{datestr}'
+
+    @property
+    def gallery_images(self):
+        if not self.image or not self.gallery:
+            return []
+        return self.image.folder.files
 
 
 class ArticlePluginModel(CMSPlugin):
@@ -145,12 +153,3 @@ class ArticleSource(VersionedModel):
 
     def __str__(self):
         return self.name
-
-
-class ArticleImage(VersionedModel):
-    article     = models.ForeignKey(Article, related_name='images')
-    image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
-    index       = models.IntegerField(null=True, default=0)
-
-    class Meta:
-        ordering = ('index',)

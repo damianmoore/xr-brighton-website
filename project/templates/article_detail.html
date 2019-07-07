@@ -15,9 +15,9 @@
       </div>
       <br/>
       {{ description|safe }}
-      {% if article.images.all %}
+      {% if article.gallery_images %}
         <div class="gallery-thumbnails full-width">
-          {% for image in article.images.all %}<a href="{{ image.image.url }}"><div class="thumbnail" style="background-image: url({% thumbnail image.image 300x300 quality=60 crop %})"></div></a>{% endfor %}
+          {% for image in article.gallery_images %}<a href="{{ image.url }}"><div class="thumbnail" style="background-image: url({% thumbnail image 300x300 quality=60 crop %})"></div></a>{% endfor %}
         </div>
       {% endif %}
       {% if article.sources.all %}
