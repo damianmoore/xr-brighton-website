@@ -12,7 +12,8 @@ class EventPublisher(CMSPluginBase):
     model = EventPluginModel  # model where plugin data are saved
     module = _('Events')
     name = _('Event Plugin')  # name of the plugin in the interface
-    render_template = "cms_plugins/event_plugin.html"
+    render_template = 'cms_plugins/event_plugin.html'
+    cache = False
 
     def render(self, context, instance, placeholder):
         selected_category = None
@@ -36,7 +37,8 @@ class ArticlePublisher(CMSPluginBase):
     model = ArticlePluginModel  # model where plugin data are saved
     module = _('Articles')
     name = _('Article Plugin')  # name of the plugin in the interface
-    render_template = "cms_plugins/article_plugin.html"
+    render_template = 'cms_plugins/article_plugin.html'
+    cache = False
 
     def render(self, context, instance, placeholder):
         context.update({
