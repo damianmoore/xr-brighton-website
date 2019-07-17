@@ -143,7 +143,7 @@ class Article(VersionedModel):
     def gallery_images(self):
         if not self.image or not self.gallery:
             return []
-        return self.image.folder.files
+        return self.image.folder.files.order_by('original_filename')
 
 
 class ArticlePluginModel(CMSPlugin):
