@@ -7,12 +7,12 @@
     <link rel="icon" href="/static/images/cropped-favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="/static/images/cropped-favicon-192x192.png" sizes="192x192" />
     <meta name="description" content="{% block description %}We are Brighton Extinction Rebellion. Please come and join us at one of our events.{% endblock description %}"/>
-    <link rel="canonical" href="https://xrbrighton.earth/" />
+    <link rel="canonical" href="https://xrbrighton.earth{{ request.get_full_path }}" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Extinction Rebellion Brighton | {% block og_title %}{% endblock og_title %}" />
     <meta property="og:description" content="{% block og_description %}We are Brighton Extinction Rebellion. Please come and join us at one of our events.{% endblock og_description %}" />
-    <meta property="og:url" content="https://xrbrighton.earth/" />
+    <meta property="og:url" content="https://xrbrighton.earth{{ request.get_full_path }}" />
     <meta property="og:site_name" content="Extinction Rebellion" />
     <meta property="og:image" content="{% block og_image %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endblock og_image %}" />
     <meta property="og:image:secure_url" content="{% block og_image_secure %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endblock og_image_secure %}" />
