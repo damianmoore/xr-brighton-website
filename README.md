@@ -10,7 +10,21 @@ The site is based on the Django framework and Django CMS. Docker is used for eas
     make build
     make start
 
+You should now be able to access the site in your browser at http://localhost:8000/
+
+
+## Creating an admin account
+
+To make admin edits to your dev site you will need to create an account. While the containers are running via the previous command, in a new terminal run the following:
+
+    make shell
+    python manage.py createsuperuser
+
+You should now be able to login as an admin at http://localhost:8000/admin/
+
 
 ## Resizing photos for uploading
+
+To avoid filling up disk space on the server and making thumbnailing slow, please resize your photos on your local machine before uploading with the following:
 
     mogrify -resize 1920x1920 -quality 60 *.jpg
