@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-SITEMAP: {{ request.scheme }}://xrbrighton.earth/sitemap.xml
+SITEMAP: https://xrbrighton.earth/sitemap.xml

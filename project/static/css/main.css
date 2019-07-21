@@ -369,7 +369,8 @@ header .page-header__content {
   align-items: center;
   flex-grow: 1;
 }
-header h1 {
+header .location {
+  font-family: "FucXed", sans-serif;
   display: inline-block;
   vertical-align: top;
   margin: 5px 0 0 15px;

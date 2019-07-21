@@ -30,6 +30,8 @@ DEBUG = os.environ.get('ENV', 'prd') != 'prd'
 
 ALLOWED_HOSTS = ['localhost', 'xrbrighton.epixstudios.co.uk', 'xrbrighton.earth']
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+
 
 # Application definition
 

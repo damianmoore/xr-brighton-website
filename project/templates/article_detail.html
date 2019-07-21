@@ -2,6 +2,7 @@
 {% load cms_tags thumbnail %}
 
 {% block title %}{{ article.name }}{% endblock title %}
+{% block description %}{{ article.description|slice:":500" }}{% endblock description %}
 {% block og_title %}{{ article.article_name }}{% endblock og_title %}
 {% block og_description %}{{ article.description|slice:":500" }}{% endblock og_description %}
 {% block og_image %}{% if article.image %}https://xrbrighton.earth{% thumbnail article.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image %}

@@ -8,12 +8,11 @@ from .models import Event, Article
 
 
 class CMSSitemap(CMSSitemap):
+    protocol = 'https'
+
     def priority(self, item):
         priorities = {
             'home': 1.0,
-            'dates-and-prices': 0.7,
-            'apartments': 0.6,
-            'resort-info': 0.6,
             'news': 0.6,
         }
         return priorities.get(item.slug, 0.5)

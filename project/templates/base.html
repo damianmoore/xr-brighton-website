@@ -1,8 +1,7 @@
-{% load cms_tags menu_tags sekizai_tags version %}
-<!doctype html>
+{% load cms_tags menu_tags sekizai_tags version %}<!doctype html>
 <html>
   <head>
-    <title>Extinction Rebellion Brighton | {% block title %}{% endblock title %}</title>
+    <title>{% block title %}{% endblock title %} | Extinction Rebellion Brighton</title>
     <link href="/static/css/main.css?{% version_date %}" rel="stylesheet" />
     <link rel="icon" href="/static/images/cropped-favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="/static/images/cropped-favicon-192x192.png" sizes="192x192" />
@@ -32,7 +31,7 @@
     <header class="page-header js-page-header ">
       <div class="page-header__wrap">
         <a class="logo" href="/" rel="home">
-          <img src="/static/images/logo-black-linear.svg" alt="Extinction Rebellion"><h1>Brighton</h1>
+          <img src="/static/images/logo-black-linear.svg" alt="Extinction Rebellion"><span class="location">Brighton</span>
         </a>
         <div class="page-header__content">
           <ul class="nav">
