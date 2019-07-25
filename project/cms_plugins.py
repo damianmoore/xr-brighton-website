@@ -23,6 +23,9 @@ class EventPublisher(CMSPluginBase):
             selected_category = int(context['request'].GET['category'])
             events = events.filter(category_id=selected_category)
 
+        if instance.limit:
+            events = events[:instance.limit]
+
         context.update({
             'instance': instance,
             'events': events,
