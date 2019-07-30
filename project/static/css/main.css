@@ -382,8 +382,9 @@ header a {
 }
 header ul.nav {
   font-family: "FucXed", sans-serif;
-  margin: 0 1em 0 0;
   padding: 0;
+  text-align: right;
+  margin: 0;
 }
 header ul.nav li {
   list-style: none;
@@ -398,7 +399,10 @@ header ul.nav li a:hover {
   border-bottom: 3px solid #000;
 }
 header .social-nav {
-  margin: 0 1em 0 0;
+  margin: 0 0 0 1em;
+}
+header .donate {
+  margin: 10px 0 10px 1em;
 }
 
 footer {
@@ -493,4 +497,27 @@ footer .social-nav {
   background-size: cover;
   display: inline-block;
   margin: 0 5px 10px;
+}
+
+@media screen and (max-width: 960px) {
+  .events-widget {
+    padding: 0 20px;
+  }
+  header .page-header__content {
+    padding: 10px 0;
+  }
+  .page-header .social-nav {
+    display: none;
+  }
+  header .page-header__wrap {
+    padding: 0 10px;
+  }
+  header .donate {
+    margin: 0 0 0 1em;
+  }
+}
+@media screen and (max-width: 600px) {
+  header .location {
+    margin-left: 5px;
+  }
 }
