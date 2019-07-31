@@ -380,22 +380,22 @@ header a {
   color: #000;
   text-decoration: none;
 }
-header ul.nav {
+header ul.nav-main {
   font-family: "FucXed", sans-serif;
   padding: 0;
   text-align: right;
   margin: 0;
 }
-header ul.nav li {
+header ul.nav-main li {
   list-style: none;
   display: inline-block;
   margin: 0 0 0 0.5em;
 }
-header ul.nav li a {
+header ul.nav-main li a {
   border-bottom: 0 solid #000;
   transition: all 200ms;
 }
-header ul.nav li a:hover {
+header ul.nav-main li a:hover {
   border-bottom: 3px solid #000;
 }
 header .social-nav {
@@ -499,12 +499,116 @@ footer .social-nav {
   margin: 0 5px 10px;
 }
 
+#hamburger {
+  display: none;
+}
+.burger {
+  padding: 0;
+  border: none;
+  line-height: 0;
+  background-color: black;
+  height: 2.71875em;
+  width: 2.71875em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.nav-mobile__close {
+  position: absolute;
+  right: 1.25em;
+  top: 1.125em;
+  padding: 0;
+  border: none;
+  line-height: 0;
+  background-color: black;
+  height: 2.71875em;
+  width: 2.71875em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.page-mask {
+  background: rgba(0,0,0,0.5);
+  width: 100vw;
+  width: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  display: none;
+}
+.nav-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1001;
+  height: 100%;
+  width: 88%;
+  background-color: #21a73d;
+  padding: 5.6875em 1.25em 0 1.5625em;
+  transform: translateX(104%);
+  transition: transform 0.4s;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.6));
+  filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.6));
+  overflow: scroll;
+}
+.nav-mobile nav {
+  margin-bottom: 3.75em;
+}
+.nav-mobile nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-mobile nav a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  border-top: 1px solid #1D1D1B;
+  font-family: "FucXed",sans-serif;
+  font-weight: bold;
+  font-size: 2.1875em;
+  padding: .14286em 1.14286em 0 0;
+}
+.nav-mobile .social-nav li {
+  margin: 0 5px 0 0;
+}
+.has-open-mobile-nav .page-mask {
+  display: block;
+}
+.has-open-mobile-nav .nav-mobile {
+  transition: transform 0.6s, background-color 0.4s;
+  transform: translateX(0);
+}
+.social-nav--mobile {
+  margin-bottom: 1.25em;
+}
+.social-nav--mobile a {
+  width: 2.8125em;
+  height: 2.8125em;
+}
+.nav-mobile .donate {
+  margin-bottom: 1.25em;
+  display: block;
+}
+.nav-mobile .donate input {
+  width: 100%;
+}
+
+
 @media screen and (max-width: 960px) {
   .events-widget {
     padding: 0 20px;
   }
   header .page-header__content {
-    padding: 10px 0;
+    padding: 20px 0;
+    align-items: start;
   }
   .page-header .social-nav {
     display: none;
@@ -519,5 +623,18 @@ footer .social-nav {
 @media screen and (max-width: 600px) {
   header .location {
     margin-left: 5px;
+  }
+
+  header .page-header__wrap {
+    padding: 0 20px;
+  }
+  .nav-main {
+    display: none;
+  }
+  .donate--head {
+    display: none;
+  }
+  #hamburger {
+    display: block;
   }
 }

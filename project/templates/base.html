@@ -27,15 +27,38 @@
     {% render_block "css" %}
   </head>
 
-  <body>
+  <body class="">
     {% cms_toolbar %}
+    <div class="nav-mobile js-nav-mobile">
+      <button class="nav-mobile__close close-button" id="close-hamburger" aria-label="close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#FFFFFF" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </button>
+      <nav data-nav="" data-nav-btn-class="nav-mobile__expand">
+        <ul class="nav">
+          {% show_menu 0 100 100 100 %}
+        </ul>
+      </nav>
+      <div class="social-nav social-nav--mobile">
+        {% include "snippets/social_nav.html" %}
+      </div>
+      <div class="donate donate--mobile">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_donations" />
+          <input type="hidden" name="business" value="xr_brighton_finance@protonmail.com" />
+          <input type="hidden" name="currency_code" value="GBP" />
+          <input type="submit" value="Donate" class="btn btn--primary-dark"/>
+        </form>
+      </div>
+    </div>
+    <div class="page-mask" id="js-page-mask"></div>
+
     <header class="page-header js-page-header ">
       <div class="page-header__wrap">
         <a class="logo" href="/" rel="home">
           <img src="/static/images/logo-black-linear.svg" alt="Extinction Rebellion"><span class="location">Brighton</span>
         </a>
         <div class="page-header__content">
-          <ul class="nav">
+          <ul class="nav-main">
             {% show_menu 0 100 100 100 %}
           </ul>
           <div class="social-nav social-nav">
@@ -49,6 +72,9 @@
               <input type="submit" value="Donate" class="btn btn--primary-dark"/>
             </form>
           </div>
+          <button class="burger" id="hamburger" aria-label="Open Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="#FFFFFF" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </button>
         </div>
       </div>
     </header>
@@ -66,6 +92,19 @@
     </footer>
 
     {% render_block "js" %}
+
+
+    <script type="text/javascript">
+      document.getElementById('hamburger').onclick = function() {
+        document.body.classList.add('has-open-mobile-nav')
+      }
+      document.getElementById('close-hamburger').onclick = function() {
+        document.body.classList.remove('has-open-mobile-nav')
+      }
+      document.getElementById('js-page-mask').onclick = function() {
+        document.body.classList.remove('has-open-mobile-nav')
+      }
+    </script>
 
 
     <!-- Matomo -->
