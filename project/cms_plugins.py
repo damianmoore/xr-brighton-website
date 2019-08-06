@@ -23,6 +23,9 @@ class EventPublisher(CMSPluginBase):
             selected_category = int(context['request'].GET['category'])
             events = events.filter(category_id=selected_category)
 
+        if instance.show_only_promoted:
+            events = events.filter(promote=True)
+
         if instance.limit:
             events = events[:instance.limit]
 
