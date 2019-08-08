@@ -1,7 +1,7 @@
 html {
   height: 100%;
   box-sizing: border-box;
-  font-size: 1em;
+  font-size: 18px;
 }
 *, *:before, *:after {
   box-sizing: inherit;
