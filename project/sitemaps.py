@@ -12,8 +12,9 @@ class CMSSitemap(CMSSitemap):
 
     def priority(self, item):
         priorities = {
-            'home': 1.0,
-            'news': 0.6,
+            'home':     1.0,
+            'events':   0.8,
+            'news':     0.7,
         }
         return priorities.get(item.slug, 0.5)
 
@@ -24,13 +25,15 @@ class CMSSitemap(CMSSitemap):
         if type(item) == Article:
             return datetime.combine(item.updated_at, datetime.min.time()).replace(tzinfo=timezone.utc)
 
-        elif item.slug in ['home']:
+        elif item.slug in ['events']:
             return Event.objects.all().order_by('-updated_at')[0].updated_at
 
         return super(CMSSitemap, self).lastmod(item)
 
     def changefreq(self, item):
         if item.slug in ['home']:
+            return 'weekly'
+        if item.slug in ['events']:
             return 'daily'
         elif item.slug in ['news']:
             return 'weekly'
