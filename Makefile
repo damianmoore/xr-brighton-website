@@ -5,7 +5,7 @@ start:
 	docker-compose up
 
 restart:
-	docker-compose restart website
+	docker-compose stop website && docker-compose start website
 
 shell:
 	docker-compose exec website bash
