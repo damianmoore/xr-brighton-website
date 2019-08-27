@@ -110,7 +110,7 @@ main article .content {
 @media only screen and (max-width: 880px) {
   main article .content {
     width: 100%;
-    padding: 60px 40px 40px 40px;
+    padding: 60px 10px 40px 10px;
   }
 }
 
@@ -495,7 +495,7 @@ footer .social-nav {
   height: 150px;
   background-position: center;
   background-size: cover;
-  display: inline-block;
+  display: inline-table;
   margin: 0 5px 10px;
 }
 
@@ -624,7 +624,6 @@ footer .social-nav {
   header .location {
     margin-left: 5px;
   }
-
   header .page-header__wrap {
     padding: 0 20px;
   }
