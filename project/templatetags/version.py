@@ -1,9 +1,14 @@
 from django import template
 import time
 import os
+import random
+
 
 register = template.Library()
 
+
 @register.simple_tag
 def version_date():
-    return time.strftime('%Y%m%d', time.gmtime(os.path.getmtime('.git')))
+    if os.environ.get('ENV', 'dev') in ['stg', 'prd']:
+        return time.strftime('%Y%m%d%H%M', time.gmtime(os.path.getmtime('.git')))
+    return random.random()

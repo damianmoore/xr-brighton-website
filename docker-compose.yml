@@ -16,6 +16,8 @@ services:
       - ./index.html:/srv/index.html
       - ./system:/srv/system
       - ./project:/srv/project
+      - ./project/static/css:/srv/static/css
+      - ./mailinglist:/srv/mailinglist
       - ./volumes/media:/srv/media
       - ./.git:/srv/.git
     depends_on:

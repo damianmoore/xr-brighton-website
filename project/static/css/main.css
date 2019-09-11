@@ -601,6 +601,38 @@ footer .social-nav {
   width: 100%;
 }
 
+.mailinglist-form {
+  background: #21a73d;
+  margin: 40px 0;
+  padding: 15px;
+}
+.mailinglist-form h2 {
+  text-align: center;
+  margin: 8px 0 12px;
+}
+.mailinglist-form form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.mailinglist-form input {
+  min-width: 100px;
+  flex-grow: 1;
+  margin: 5px;
+  padding: 3px 6px;
+  font-size: 16px;
+  font-family: "Crimson Text", Georgia, serif;
+}
+.mailinglist-form input[type="submit"] {
+  background: #000;
+  color: #fff;
+  border: 0;
+  font-family: "FucXed", sans-serif;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 6px 6px 3px;
+}
+
 
 @media screen and (max-width: 960px) {
   .events-widget {
@@ -618,6 +650,9 @@ footer .social-nav {
   }
   header .donate {
     margin: 0 0 0 1em;
+  }
+  .mailinglist-form input {
+    width: 100%;
   }
 }
 @media screen and (max-width: 600px) {

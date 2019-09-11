@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     url(r'^admin/', admin.site.urls),  # NOQA
+    url(r'mailinglist/', include('mailinglist.urls')),
     url(r'^event/(?P<slug>[\w-]+)/$', event_detail),
     url(r'^news/(?P<slug>[\w-]+)/$', article_detail),
     url(r'^', include('cms.urls')),

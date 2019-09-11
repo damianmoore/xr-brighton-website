@@ -1,0 +1,10 @@
+<div class="mailinglist-form">
+  <h2>{{ instance.title }}</h2>
+  <form method="post" action="/mailinglist/signup/">
+    {% csrf_token %}
+    <input type="email" name="email" placeholder="user@domain.com" />
+    <input type="text" name="first_name" placeholder="First name" />
+    <input type="text" name="last_name" placeholder="Last name" />
+    <input type="submit" value="Sign up" />
+  </form>
+</div>

@@ -19,6 +19,7 @@ COPY requirements.txt /srv/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY project /srv/project
+COPY mailinglist /srv/mailinglist
 COPY system /srv/system
 COPY manage.py /srv/manage.py
 COPY .git /srv/.git
