@@ -1,8 +1,8 @@
+from django.db import IntegrityError
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
-
-# import requests
+import requests
 
 from .models import Subscription
 
@@ -15,13 +15,21 @@ def signup(request):
 
     try:
         Subscription(email=email, first_name=first_name, last_name=last_name).save()
-        context = {
-            'email': email
-        }
-        return HttpResponseRedirect('/mailinglist/confirmation')
-
+        requests.post('https://skylark.epixstudios.co.uk/webhook/', params={
+            'title': "New XR mailing list subscription",
+            'icon': 'https://xrbrighton.earth/static/images/cropped-favicon-192x192.png',
+            'body': 'Domain: {}  Total: {}'.format(email.split('@')[-1], Subscription.objects.count()),
+            'color': '#21a73d',
+        })
+    except IntegrityError:
+        pass
     except:
         return render(request, 'mailinglist/error.html')
+
+    context = {
+        'email': email
+    }
+    return HttpResponseRedirect('/mailinglist/confirmation')
 
 
 def confirmation(request):

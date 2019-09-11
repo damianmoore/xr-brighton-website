@@ -19,9 +19,9 @@ django-classy-tags>=0.7
 html5lib>=1.0.1
 Pillow>=3.0
 django-sekizai>=0.9
+requests==2.16.0
 six
 pytz
-
 gunicorn
 mysqlclient
 Markdown
