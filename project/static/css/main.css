@@ -606,7 +606,7 @@ footer .social-nav {
   margin: 40px 0;
   padding: 15px;
 }
-.mailinglist-form h2 {
+.mailinglist-form h2, .mailinglist-form p {
   text-align: center;
   margin: 8px 0 12px;
 }

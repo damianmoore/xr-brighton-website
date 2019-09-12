@@ -1,5 +1,6 @@
 <div class="mailinglist-form">
-  <h2>{{ instance.title }}</h2>
+  {% if instance.title %}<h2>{{ instance.title }}</h2>{% endif %}
+  {% if instance.subtitle %}<p>{{ instance.subtitle }}</p>{% endif %}
   <form method="post" action="/mailinglist/signup/">
     {% csrf_token %}
     <input type="email" name="email" placeholder="user@domain.com" />

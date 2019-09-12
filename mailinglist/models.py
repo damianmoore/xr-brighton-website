@@ -27,3 +27,4 @@ class Subscription(models.Model):
 
 class SubscriptionPluginModel(CMSPlugin):
     title = models.CharField(max_length=100, blank=True)
+    subtitle = models.TextField(blank=True)

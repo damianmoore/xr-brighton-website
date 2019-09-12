@@ -14,3 +14,9 @@ class MailinglistPublisher(CMSPluginBase):
     name = _('Mailinglist Plugin')  # name of the plugin in the interface
     render_template = 'cms_plugins/mailinglist_plugin.html'
     cache = False
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'instance': instance,
+        })
+        return context
