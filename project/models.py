@@ -159,3 +159,9 @@ class ArticleSource(VersionedModel):
 
     def __str__(self):
         return self.name
+
+
+class Arrestee(VersionedModel):
+    name            = models.CharField(max_length=100)
+    contact_details = models.CharField(max_length=100, blank=True, null=True)
+    observer_name   = models.CharField(max_length=100)

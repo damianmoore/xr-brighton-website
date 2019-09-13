@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event, Article, ArticleSource
+from .models import Category, Event, Article, ArticleSource, Arrestee
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -104,3 +104,17 @@ class ArticleAdmin(VersionedAdmin):
     def date_short(self, obj):
         return obj.date.strftime("%d %b %Y")
     date_short.short_description = 'Date'
+
+
+@admin.register(Arrestee)
+class ArresteeAdmin(VersionedAdmin):
+    list_display = ('name', 'contact_details', 'observer_name', 'created_at')
+    list_ordering = ('-created_at')
+    list_filter = ('created_at', 'observer_name')
+    search_fields = ('name', 'contact_details', 'observer_name')
+
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'contact_details', 'observer_name'),
+        }),
+    ) + VersionedAdmin.fieldsets

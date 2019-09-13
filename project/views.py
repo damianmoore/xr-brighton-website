@@ -1,10 +1,12 @@
 import datetime
 import re
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 import markdown
+import requests
 
-from .models import Event, Article
+from .models import Event, Article, Arrestee
 
 
 def event_detail(request, slug):
@@ -31,3 +33,42 @@ def article_detail(request, slug):
         'article': article,
         'description': description,
     })
+
+
+def arrestee_details(request):
+    if request.method == 'POST':
+        context = {}
+        error = False
+        arrestee_name = request.POST.get('arrestee_name')
+        arrestee_contact = request.POST.get('arrestee_contact')
+        observer_name = request.POST.get('observer_name')
+
+        if not arrestee_name:
+            context['error'] = 'Arrestee name missing'
+            error = True
+        elif not observer_name:
+            context['error'] = 'Observer name missing'
+            error = True
+
+        if error:
+            context.update({
+                'arrestee_name': arrestee_name,
+                'arrestee_contact': arrestee_contact,
+                'observer_name': observer_name,
+            })
+            return render(request, 'arrestee_details.html', context)
+
+        try:
+            Arrestee(name=arrestee_name, contact_details=arrestee_contact, observer_name=observer_name).save()
+            requests.post('https://skylark.epixstudios.co.uk/webhook/', params={
+                'title': "XR arrestee details added",
+                'icon': 'https://xrbrighton.earth/static/images/cropped-favicon-192x192.png',
+                'body': 'Total: {}'.format(Arrestee.objects.count()),
+                'color': '#21a73d',
+            })
+        except:
+            return render(request, 'arrestee_error.html')
+
+        return HttpResponseRedirect('/arrestee-details/confirmation')
+
+    return render(request, 'arrestee_details.html', {})

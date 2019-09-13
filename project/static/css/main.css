@@ -622,6 +622,7 @@ footer .social-nav {
   padding: 3px 6px;
   font-size: 16px;
   font-family: "Crimson Text", Georgia, serif;
+  border: 0;
 }
 .mailinglist-form input[type="submit"] {
   background: #000;

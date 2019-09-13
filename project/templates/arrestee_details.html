@@ -1,0 +1,21 @@
+{% load version %}<!doctype html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <title>Arrestee Detail Collection | Extinction Rebellion Brighton</title>
+    <link href="/static/css/arrestee_details.css?{% version_date %}" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Arrestee detail collection</h1>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" name="arrestee_name" placeholder="Arrestee name" value="{{ arrestee_name }}" maxlength="100" />
+      <input type="text" name="arrestee_contact" placeholder="Arrestee contact details" value="{{ arrestee_contact }}" maxlength="100" />
+      <input type="text" name="observer_name" placeholder="Your name" value="{{ observer_name }}" maxlength="100" />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

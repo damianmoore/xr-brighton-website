@@ -1,0 +1,71 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a {
+  outline: 0;
+}
+*:focus {
+  outline: none;
+}
+
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Crimson Text Regular'), local('CrimsonText-Regular'), url(../fonts/wlp2gwHKFkZgtmSR3NB0oRJfbwhT.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Crimson Text Bold'), local('CrimsonText-Bold'), url(../fonts/wlppgwHKFkZgtmSR3NB0oRJX1C1GDNNQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'FucXed';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/fucxedcaps-v2-webfont.woff2) format('woff2');
+}
+body {
+  background: #21a73d;
+  font-family: sans-serif;
+  padding: 10px
+}
+h1 {
+  text-align: center;
+  font-family: "FucXed", sans-serif;
+  margin: 10px 0 20px;
+  font-size: 36px;
+}
+p {
+  text-align: center;
+}
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+input {
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 7px 10px;
+  font-size: 20px;
+  font-family: "Crimson Text", Georgia, serif;
+  border: 0;
+}
+input[type="submit"] {
+  background: #000;
+  color: #fff;
+  border: 0;
+  font-family: "FucXed", sans-serif;
+  cursor: pointer;
+  font-size: 32px;
+  padding: 10px 6px 7px;
+}

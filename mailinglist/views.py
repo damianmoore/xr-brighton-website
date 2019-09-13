@@ -26,9 +26,6 @@ def signup(request):
     except:
         return render(request, 'mailinglist/error.html')
 
-    context = {
-        'email': email
-    }
     return HttpResponseRedirect('/mailinglist/confirmation')
 
 

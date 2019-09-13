@@ -9,7 +9,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import TemplateView
 from django.views.static import serve
 
-from .views import event_detail, article_detail
+from .views import event_detail, article_detail, arrestee_details
 from .sitemaps import CMSSitemap
 
 
@@ -19,7 +19,9 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     url(r'^admin/', admin.site.urls),  # NOQA
-    url(r'mailinglist/', include('mailinglist.urls')),
+    url(r'^mailinglist/', include('mailinglist.urls')),
+    url(r'^arrestee-details/confirmation', TemplateView.as_view(template_name='arrestee_details_confirmation.html')),
+    url(r'^arrestee-details/', arrestee_details),
     url(r'^event/(?P<slug>[\w-]+)/$', event_detail),
     url(r'^news/(?P<slug>[\w-]+)/$', article_detail),
     url(r'^', include('cms.urls')),
