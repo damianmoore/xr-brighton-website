@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
@@ -32,3 +33,13 @@ def signup(request):
 def confirmation(request):
     context = {}
     return render(request, 'mailinglist/confirmation.html', context)
+
+
+@login_required
+def download(request):
+    response = ''
+    for subscription in Subscription.objects.all().order_by('created_at'):
+        response += f'{subscription.email},{subscription.first_name},{subscription.last_name}\n'
+    response = HttpResponse(response, content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="mailinglist.csv"'
+    return response

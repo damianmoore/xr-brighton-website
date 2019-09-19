@@ -6,4 +6,5 @@ from . import views
 urlpatterns = [
     url('signup', views.signup, name='signup'),
     url('confirmation', views.confirmation, name='confirmation'),
+    url('download', views.download, name='download'),
 ]

@@ -178,6 +178,8 @@ CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
 
+LOGIN_URL = '/admin/login/'
+
 
 if os.environ.get('MYSQL_DATABASE'):
     DATABASES = {
