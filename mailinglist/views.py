@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.shortcuts import render
@@ -41,5 +43,6 @@ def download(request):
     for subscription in Subscription.objects.all().order_by('created_at'):
         response += f'{subscription.email},{subscription.first_name},{subscription.last_name}\n'
     response = HttpResponse(response, content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="mailinglist.csv"'
+    date_str = date.today().strftime('%Y%m%d')
+    response['Content-Disposition'] = f'attachment; filename="mailinglist{date_str}.csv"'
     return response
