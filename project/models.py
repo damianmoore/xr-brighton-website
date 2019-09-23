@@ -76,7 +76,17 @@ class Event(VersionedModel):
 
     def generate_slug(self):
         datestr = self.start.strftime('%Y%m%d')
-        return f'{slugify(self.name)}-{datestr}'
+        slug = f'{slugify(self.name)}-{datestr}'
+
+        if self.id:
+            count = Event.objects.filter(slug=slug).exclude(id=self.id).count()
+        else:
+            count = Event.objects.filter(slug=slug).count()
+
+        if count > 0:
+            slug += f'-{count+1}'
+
+        return slug
 
     @property
     def in_future(self):
