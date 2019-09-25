@@ -89,7 +89,7 @@ class ArticleSourceInline(admin.TabularInline):
 class ArticleAdmin(VersionedAdmin):
     list_display = ('article_name', 'date_short', 'event', 'num_photos')
     list_ordering = ('-date')
-    search_fields = ('name', 'event__name', 'sources__name', 'sources__url', 'description')
+    search_fields = ('name', 'slug', 'event__name', 'sources__name', 'sources__url', 'description')
     raw_id_fields = ('event', )
 
     fieldsets = (

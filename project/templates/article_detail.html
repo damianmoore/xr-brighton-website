@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load cms_tags thumbnail %}
 
-{% block title %}{{ article.name }}{% endblock title %}
+{% block title %}{{ article.article_name }}{% endblock title %}
 {% block description %}{{ article.description|slice:":500" }}{% endblock description %}
 {% block og_title %}{{ article.article_name }}{% endblock og_title %}
 {% block og_description %}{{ article.description|slice:":500" }}{% endblock og_description %}
 {% block og_image %}{% if article.image %}https://xrbrighton.earth{% thumbnail article.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image %}
 {% block og_image_secure %}{% if article.image %}https://xrbrighton.earth{% thumbnail article.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image_secure %}
-{% block twitter_title %}{{ article.name }}{% endblock twitter_title %}
+{% block twitter_title %}{{ article.article_name }}{% endblock twitter_title %}
 {% block twitter_description %}{{ article.description|slice:":500" }}{% endblock twitter_description %}
 {% block twitter_image %}{% if article.image %}https://xrbrighton.earth{% thumbnail article.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock twitter_image %}
 
