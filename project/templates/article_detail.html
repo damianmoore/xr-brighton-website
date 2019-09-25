@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags thumbnail %}
+{% load cms_tags thumbnail sekizai_tags %}
 
 {% block title %}{{ article.article_name }}{% endblock title %}
 {% block description %}{{ article.description|slice:":500" }}{% endblock description %}
@@ -11,7 +11,32 @@
 {% block twitter_description %}{{ article.description|slice:":500" }}{% endblock twitter_description %}
 {% block twitter_image %}{% if article.image %}https://xrbrighton.earth{% thumbnail article.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock twitter_image %}
 
+
 {% block content %}
+  {% addtoblock "css" %}
+    <link href="/static/floatbox/floatbox.css" media="screen" rel="stylesheet" type="text/css" />
+  {% endaddtoblock %}
+
+  {% addtoblock "js" %}
+    <script>
+      fbOptions = {
+        global: {
+          className: 'transparent',
+          shadowType: 'none',
+          resizeTime: 0.2,
+          transitionTime: 0.2,
+          overlayFadeTime: 0.2,
+          navType: 'both',
+          group: 1
+        },
+        mobile: {
+          navType: 'button'
+        }
+      };
+    </script>
+    <script src="/static/floatbox/floatbox.js"></script>
+  {% endaddtoblock %}
+
   <article>
     <div class="hero hero-large" style="background-image: url({% thumbnail article.image 1920x960 quality=60 crop %})"></div>
     <div class="content">
@@ -24,7 +49,7 @@
       <br/>
       {{ description|safe }}
       {% if article.gallery_images %}
-        <div class="gallery-thumbnails full-width">
+        <div class="gallery-thumbnails full-width floatbox">
           {% for image in article.gallery_images %}<a href="{{ image.url }}"><div class="thumbnail" style="background-image: url({% thumbnail image 300x300 quality=60 crop %})"></div></a>{% endfor %}
         </div>
       {% endif %}

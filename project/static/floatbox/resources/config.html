@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Configurator - Floatbox</title>
+
+<script src="../floatbox.js"></script>
+<link rel="stylesheet" href="../floatbox.css"/>
+<script>
+map = {  // name: [ default, [ choices ], hint ]
+
+// compiler/makeConfigurator.js generates the production configurator.html based on data and scripts from this source file.
+
+'Appearance &amp; Animations': {
+
+// appearance
+shadowType: [ 'drop', [ 'drop', 'hybrid', 'halo', 'none' ] ],
+shadowSize: [ 12, , 'px' ],
+shadowOpacity: [ 0.4, , '0-1' ],
+outerBorder: [ 1, , 'px' ],
+innerBorder: [ 1, , 'px' ],
+outerBorderRadius: [ 8, , 'px' ],
+innerBorderRadius: [ 0, , 'px' ],
+padding: [ 20, , 'px' ],
+panelPadding: [ 6, , 'px' ],
+overlayOpacity: [ 0.55, , '0-1' ],
+
+// animations
+doAnimations: [ true ],
+overlayFadeTime: [ 0.4, , 'sec' ],
+resizeTime: [ 0.7, , 'sec' ],
+fadeTime: [ 0.4, , 'sec' ],
+transitionTime: [ 0.8, , 'sec' ],
+imageTransition: [ 'crossfade', [ 'crossfade', 'slide', 'shift', 'expand', 'fade', 'none' ] ],
+startAt: [ '' ],  // 'start', id, null
+endAt: [ '' ],  // 'start', id, null
+//	 zoomSource: [ '' ],  // path string, null
+splitResize: [ false ],
+easing: [ 2.5, , '>= 1' ],  // +ve integer, 1 for no easing, only in global or page options
+inflection: [ 0.5, , '0-1' ],  // inflection point for easing calcs, only in global or page options
+animationTime: [ 1, , 'sec' ]  // default fb.animation time, only in global or page options
+
+},
+
+'Color &amp; Size': {
+
+// colors
+colorTheme: [ '', [ 'black', 'blue', 'silver', 'white', 'yellow', 'red' ] ],
+boxColor: [ '', , 'css' ],
+overlayColor: [ '', , 'css' ],
+innerBorderColor: [ '', , 'css' ],
+outerBorderColor: [ '', , 'css' ],
+textColor: [ '', , 'css' ],
+strongTextColor: [ '', , 'css' ],
+contentBackgroundColor: [ '', , 'css' ],
+boxBackgroundImage: [ '', , 'path' ],
+overlayBackgroundImage: [ '', , 'path' ],
+
+// size
+autoFit: [ true ],
+autoFitSpace: [ 5, , 'px' ],
+enableImageResize: [ true ],
+inFrameResize: [ true ],
+hoverPan: [ true ],
+resizeTool: [ '', [ 'cursor', 'topleft', 'both' ] ],
+enableDragResize: [ false ],
+draggerLocation: [ 'frame', [ 'frame', 'content' ] ],
+stickyResize: [ true ],
+minWidth: [ 140, , 'px|%' ],
+minHeight: [ 100, , 'px|%' ],
+maxWidth: [ 0, , 'px|%' ],
+maxHeight: [ 0, , 'px|%' ],
+minBoxWidth: [ 0, , 'px|%' ],
+minBoxHeight: [ 0, , 'px|%' ]
+
+},
+
+'Position &amp; Controls': {
+
+// position
+boxLeft: [ '', , 'px|click|%' ],
+boxTop: [ '', , 'px|click|%' ],
+boxLeftAdjust: [ '', , 'px|%' ],
+boxTopAdjust: [ '', , 'px|%' ],
+captionPos: [ 'bl', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+caption2Pos: [ 'tc', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+infoLinkPos: [ 'bl', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+printLinkPos: [ 'bl', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+newWindowLinkPos: [ 'tr', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+itemNumberPos: [ 'bl', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+indexPos: [ 'br', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+controlsPos: [ 'br', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+outerClosePos: [ 'tr', [ 'tl', 'tr' ] ],
+detachOuterClose: [ false ],
+strictCentering: [ true, [ 'true', 'false', 'top', 'bottom' ] ],
+centerNav: [ false ],
+enableDragMove: [ true ],
+stickyMove: [ true ],
+
+// controls
+showControlsText: [ '', [ true, false ] ],
+showClose: [ true ],
+showOuterClose: [ false ],
+showPrint: [ false ],
+printCSS: [ '', , 'text|path' ],
+printText: [ '' ],  // Print...
+infoOptions: [ '' ],  // option string
+infoText: [ '' ],  // Info...
+showNewWindow: [ false ],
+closeOnNewWindow: [ false ],
+showHints: [ '', [ true, false ] ],
+outsideClickCloses: [ '', [ true, false ] ],
+contentClickCloses: [ false ],
+enableKeyboardNav: [ true ]
+
+},
+
+'Galleries &amp; Slideshows': {
+
+// galleries
+navType: [ 'both', [ 'overlay', 'button', 'both', 'none' ] ],
+navOverlayWidth: [ 30, , '% (0-50)' ],
+navOverlayPos: [ 33, , '% (0-50)' ],
+showNavOverlay: [ '', [ true, false ] ],
+enableSwipeNav: [ true ],
+showItemNumber: [ true ],
+enableWrap: [ true ],
+numIndexLinks: [ 0, , 'limit' ],
+showIndexThumbs: [ true ],
+maxIndexThumbSize: [ 0, , 'px' ],
+//	 indexThumbSource: [ '', , 'path' ],
+randomOrder: [ false ],
+
+// slideshows
+doSlideshow: [ false ],
+slideInterval: [ 4.5, , 'sec' ],
+afterSlideshow: [ 'exit', [ 'exit', 'stop', 'loop' ] ],
+showPlayPause: [ true ],
+startPaused: [ false ]
+
+},
+
+'Tooltips, Cyclers, etc.': {
+
+// tooltips & contexts
+//	 source: [ '' ],
+placement: [ 'bottom', [ 'top', 'bottom', 'left', 'right', 'center' ] ],
+showOnce: [ false ],
+delay: [ 333, , 'msec' ],
+arrowColor: [ '', , 'css' ],
+arrowSize: [ 16, , 'px' ],
+contextMouseButton: [ 'both', [ 'both', 'left', 'right' ] ],
+
+// cyclers
+cycleInterval: [ 6, , 'sec' ],
+cycleFadeTime: [ 1.7, , 'sec' ],
+cycleZoom: [ 0.2, , 'portion (0-1)' ],
+cycleEasing: [ 1.4, , '>= 1' ],
+cycleInflection: [ '', , '0-1' ],
+cyclePauseOnClick: [ false ],
+cycleShowControls: [ true ],
+cycleControlsPos: [ 'bl', [ 'tl', 'tc', 'tr', 'bl', 'bc', 'br' ] ],
+cycleStartPaused: [ false ],
+cyclePauseOnHover: [ false ]
+
+},
+
+'General': {
+
+// general
+//	 mobile: [ '' ],  // option string or object
+addVideoThumb: [ '', , 'width' ],  // width(px), 'small', 'medium', 'large'
+addPlayButton: [ '', [ 'small', 'medium', 'large', false ] ],
+fetchVideoInfo: [ true ],
+autoPlayVideo: [ true ],
+autoEndVideo: [ true ],
+titleAsCaption: [ true, [ true, false, 'a', 'img' ] ],
+altAsCaption: [ false ],
+showMagCursor: [ false, [ false, true, 'once' ] ],
+modal: [ true ],
+keepCentered: [ '', [ true, false ] ],
+boxScroll: [ true ],
+pageScroll: [ '', [ true, false ] ],
+instanceName: [ '' ],  // string
+attachTo: [ '', , 'id' ],  // id
+zIndex: [ 77777 ],  // base zindex assigned to first box
+//	 framed: [ false ],
+activateMedia: [ true ],
+autoGallery: [ false ],
+preloadLimit: [ 5 ],  // 1 for mobile set in fbOptions.js
+language: [ '', [ 'ar', 'bg', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fa', 'fi', 'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'is', 'it', 'ja', 'ko', 'lt', 'nb', 'nl', 'nn', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sr', 'sv', 'th', 'tr', 'vi', 'zh' ] ],  // see the languages folder
+floatboxClass: [ 'floatbox' ],  // alternate className to be treated like '.floatbox'
+cyclerClass: [ 'fbCycler' ],  // className on thumb/img cycler divs
+tooltipClass: [ 'fbTooltip' ],  // className on tooltipped elements
+contextClass: [ 'fbContext' ]  // className on elements with context boxes attached
+
+},
+
+'per-item': {  // not in the configurator
+
+// item-specific
+group: [ '' ],  // string or number
+width: [ '' ],  // pixels, 'xx%'
+height: [ '' ],  // pixels, 'xx%'
+aspect: [ '' ], // number, 16/9 for video
+contentScroll: [ true ],
+caption: [ '' ],  // string, #hiddenDivId
+caption2: [ '' ],  // string, #hiddenDivId
+header: [ '' ],  // string, #hiddenDivId
+footer: [ '' ],  // string, #hiddenDivId
+type: [ '', [ 'ajax', 'video', 'image' ] ],
+showThis: [ true ],
+sameBox: [ false ],
+newWindow: [ false ],  // makes sense only in mobile options
+altContent: [ '' ],  // string
+info: [ '' ],  // source reference
+useMap: [ '' ],  // id
+source: [ '' ],  // source reference
+className: [ '' ],  // string
+autoStart: [ false, [ true, 'once' ] ],
+autoDelay: [ '' ],  // seconds
+autoEnd: [ '' ],  // seconds
+loadPageOnClose: [ '' ],  // 'self', 'back', url
+noFocus: [ false ],
+order: [ '' ]  // item x of y order
+},
+
+'callbacks': {  // also not in the configurator
+
+// callbacks - all are functions or executable strings
+beforeBoxStart: [ '' ],
+beforeItemStart: [ '' ],
+afterBoxStart: [ '' ],
+afterItemStart: [ '' ],
+beforeItemEnd: [ '' ],
+beforeBoxEnd: [ '' ],
+afterItemEnd: [ '' ],
+afterBoxEnd: [ '' ],
+beforePrint: [ '' ]
+}
+
+};
+</script>
+
+<style>
+body{font:normal 12px/1.4 sans-serif;background:#e3e3e3}
+#main,#output{width:59em;margin:0 auto;text-align:center}
+#main{margin-top:1.2em;padding:1.5em;background:#ccc repeat url(data:image/gif;base64,R0lGODdhBgAGAMIFAMTExMzMzMfHx8nJycvLy////////////ywAAAAABgAGAAADDkgxALLtMRdCrIKG/HZLADs=);box-shadow:-12px 3px 15px -4px rgba(0,0,0,0.34),12px 3px 15px -4px rgba(0,0,0,0.34)}
+#buttons{margin:2em auto 0 auto;text-align:center}
+form{clear:both;text-align:left}
+button{color:#fff;background-color:#555;border:3px solid #222;border-radius:.85em;padding:.25em .6em;margin:0 1em;outline:none}
+table{width:100%;border:1px solid black;border-spacing:0;background:#f4f4f4}
+td{position:relative;width:25%;border:1px solid black;padding:.5em}
+td .fbTooltip{position:absolute;right:0;top:0;background-color:#c6deff;cursor:help}
+select,input[type=text]{width:7em}
+#message{text-align:left;padding:.7em 8em;margin:1em 0 .3em}
+#optionsText{border:2px solid #9ac;padding:.7em;margin:auto;display:none}
+.ref{padding:0 1em}
+.code{font:normal 11px monospace;color:maroon;background-color:#ffe}
+#tab1{display:block}
+.tabContent{display:none}
+.tabs{font:bold 12px/1.2 sans-serif;width:100%;height:2.7em;margin:4px 0 0;text-align:left;border-bottom:0px solid #bbb}
+.tabs a{display:inline-block;width:6.7em;height:100%;text-align:center;vertical-align:top;border:1px solid #333;border-bottom-width:0!important;border-radius:6px 6px 0 0;margin:-5px 2px 0 0;padding:4px 10px 0;color:#333;background-color:#e3e3e3;text-decoration:none}
+.tabs a:first-child{margin-left:12px;}
+.tabs a:hover{border-color:#800;background-color:#fbf7f0}
+.tabs a.active{background-color:#f4f4f4;background:linear-gradient(0deg,#f4f4f4,#f4f4f4 65%,#fda);border:2px solid #800;margin-top:-7px;padding:5px 9px 1px;}
+</style>
+</head>
+
+<body>
+<div id="main">
+
+<div class="tabs"></div>
+
+<form id="form" method="post">
+
+<p id="buttons">
+<button type="button" onclick="clicker( 'global' );">Generate global options</button>
+<button type="button" onclick="clicker( 'page' );">Generate page options</button>
+<button type="button" onclick="clicker( 'reset' );">Reset Form</button>
+</p>
+
+</form>
+</div>	<!-- main -->
+
+<div id="output">
+<ul id="message">
+<li>Use this page to generate global or page-specific floatbox options.</li>
+<li>Set preferences the way you want them,
+click one of the 'generate' buttons to get a global or page-specific options definition,
+and then paste the generated code from the text area as described in the message above the text area.</li>
+<li>See the configurator section of the instructions for more details
+and the tooltipped help on each form field for information about the available settings.</li>
+<li>Note that there are many item-specific options that are not usually set globally and are therefore not in this configurator.</li>
+</ul>
+<textarea id="optionsText" readonly="readonly" cols="50" rows="14"></textarea>
+</div>
+
+<div id="help" style="display:none;">
+
+</div>
+
+<script>
+
+settings = {
+	defaults: {
+	}
+};
+
+function clicker ( what ) {
+
+	if ( what == 'reset' ) {
+		initForm();
+		fb.$( 'optionsText' ).value = '';
+		fb.$( 'message' ).innerHTML = '&nbsp;';
+	}
+
+	else {
+		what = buildText( what == 'global' );
+		fb.$( 'message' ).innerHTML = what[0];
+		fb.$( 'message' ).style.textAlign = 'center';
+		fb.$( 'optionsText' ).value = what[1];
+		fb.$( 'optionsText' ).style.display = 'block';
+		fb.$( 'optionsText' ).select();
+	}
+}
+
+function initForm () {
+	var
+		field, els, el, value,
+		i, j,
+		options = settings.initialSettings,
+		labels = fb.select( 'label', 'form' );
+
+	i = labels.length;
+	while ( i-- ) {
+		field = fb.select( 'input, select', labels[i], 0 );
+		if ( field ) {
+			field.name = field.id = labels[i].innerHTML.replace( /<[\s\S]+/, '' );
+		}
+	}
+
+	els = fb.select( 'select' );
+	i = els.length;
+	while ( i-- ) {
+		el = els[i];
+		value = options[el.id];
+		j = el.options.length;
+		while ( j-- ) {
+			el.options[j].selected = el.options[j].value == value + '';
+		}
+	}
+
+	els = fb.select( 'input' );
+	i = els.length;
+	while ( i-- ) {
+		el = els[i];
+		value = options[el.id];
+		if ( el.type === 'checkbox' ) {
+			el.checked = value;
+			if ( fb.hasClass( el, 'triState' ) ) {
+				el.state = null;
+				setTriState.apply( el, [ value ] );
+			}
+		}
+		else {
+			el.value = value;
+		}
+	}
+}
+
+
+function buildText( global ) {
+	var
+		name, val,
+		els, el, i,
+		globalIntro = 'global: {',
+		globalOutro = '\n},\n',
+		pageIntro = '<script>\nfbOptions = {\n	global: {',
+		pageOutro = '\n	}\n};\n<\/script>\n',
+		options = {},
+		strOptions = global ? globalIntro : pageIntro;
+
+	fb.extend( options, settings.optionsJS );
+	for ( i in options ) {
+		if ( !settings.defaults.hasOwnProperty( i ) ) {
+			delete options[i];
+		}
+	};
+
+	els = fb.select( 'select' );
+	i = els.length;
+	while ( i-- ) {
+		el = els[i];
+		options[el.id] = el.options[el.selectedIndex].value;
+	}
+
+	els = fb.select( 'input' );
+	i = els.length;
+	while ( i-- ) {
+		el = els[i];
+		if ( el.type === 'checkbox' ) {
+			options[el.id] = fb.hasClass( el, 'triState' ) ? el.state : !!el.checked;
+		}
+		else {
+			options[el.id] = el.value;
+		}
+	}
+
+	for( name in options ) {
+		val = options[ name ];
+		if ( typeof val === 'string' ) {
+			val = !isNaN( val ) && val !== '' ? +val :
+				val === 'true' || val === 'yes' ? true :
+				val === 'false' || val === 'no' ? false :
+				val === 'default' || val === 'auto' ? undefined :
+				val === 'null' ? null :
+				/^\d+px$/.test( val ) ? parseFloat( val ) || val :  // strip 'px' and convert to a number
+				val;
+		}
+
+		if ( val !== settings.defaults[name] ) {
+
+			if ( typeof val === 'string' ) {
+				val = '"' + val + '"';
+			}
+
+			if ( typeof val === 'function' ) {
+				val = (val + '').
+				replace( /\r\n/g, '\n' ).
+				replace( /\r/g, '\n' ).
+				replace( /\n/g, ' ' ).
+				replace( /\s+/g, ' ' );
+			}
+
+			if ( val !== '' ) {
+				strOptions += '\n' + (global ? '	' : '		') + name + ': ' + val + ',';
+			}
+		}
+	};
+
+	if ( strOptions.charAt( strOptions.length - 1 ) === ',' ) {
+		strOptions = strOptions.substring( 0, strOptions.length - 1 );
+	}
+	strOptions += global ? globalOutro : pageOutro;
+
+	return [ global ?
+		'&nbsp;&nbsp;Replace the "global" section in floatbox/fbOptions.js with the following code.' :
+		'&nbsp;&nbsp;Copy and paste the following script element into the &lt;head&gt; section of your page(s).',
+		strOptions
+	];
+}
+
+function setTriState ( init ) {
+
+	if ( this.state === true || init === false ) {  // true goes to false
+		this.state = false;
+		this.indeterminate = false;
+		this.checked = false;
+		this.style.opacity = 1;
+	}
+
+	else if ( this.state === false || init === '' ) {  // false goes to ''
+		this.state = '';
+		this.indeterminate = true;
+		this.checked = false;
+		this.style.opacity = 0.4;
+	}
+
+	else if ( this.state === '' || init === true ) {  // '' goes to true
+		this.state = true;
+		this.indeterminate = false;
+		this.checked = true;
+		this.style.opacity = 1;
+	}
+}
+
+fbOptions = {
+  global: {
+    framed: true
+  },
+  className: {
+    fbTooltip: {
+      width: 350,
+      contentBackgroundColor: '#ecf4ff',
+      arrowColor: 'transparent'
+    }
+  }
+};
+
+// setup tab actions and the initial option settings
+fb.ready( function () {
+	var
+		div, i,
+		tabLinks = fb.select( '.tabs a' );
+
+	settings.optionsJS = fb.fbOptions.global;
+	settings.initialSettings = fb.extend( {}, settings.defaults, settings.optionsJS );
+	initForm();
+
+	fb.addEvent( fb.select( '.triState' ), 'click', setTriState );
+
+	fb.addEvent( tabLinks, 'onclick', function ( e ) {
+		fb.removeClass( tabLinks, 'active' );
+		fb.addClass( this, 'active' );
+		for ( i = 0; i < tabLinks.length; i++ ) {
+			div = fb.$( tabLinks[i].href.split( '#' )[1] );
+			if ( div ) {
+				div.style.display = tabLinks[i] === this ? 'block' : 'none';
+			}
+		}
+		return fb.stopEvent( e );
+	} );
+} );
+
+</script>
+</body>
+</html>
