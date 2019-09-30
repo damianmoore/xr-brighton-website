@@ -633,6 +633,13 @@ footer .social-nav {
   font-size: 24px;
   padding: 6px 6px 3px;
 }
+.mailinglist-form-bottom {
+  margin-bottom: 0;
+}
+.mailinglist-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 
 @media screen and (max-width: 960px) {
