@@ -26,7 +26,7 @@ def article_detail(request, slug):
     article = Article.objects.get(slug=slug)
 
     regex = r'([^\"])(http[s]*:\/\/[\w\S]+[\w\/]+)'
-    description = re.sub(regex, lambda url: '{0}[{1}]({1})'.format(url.group(1), url.group(2)), event.description)
+    description = re.sub(regex, lambda url: '{0}[{1}]({1})'.format(url.group(1), url.group(2)), article.description)
     description = markdown.markdown(description)
 
     return render(request, 'article_detail.html', {
