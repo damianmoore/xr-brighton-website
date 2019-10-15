@@ -1,0 +1,13 @@
+<div class="mailinglist-form mailinglist-form-bottom">
+  <div class="mailinglist-inner">
+    <h2>Join our mailing list</h2>
+    <p>You will receive regular updates about actions, training sessions, events and meetings in the Brighton area. Your personal data will not be passed on to other organisations without your explicit consent.</p>
+    <form method="post" action="/mailinglist/signup/">
+      {% csrf_token %}
+      <input type="email" name="email" placeholder="user@domain.com" />
+      <input type="text" name="first_name" placeholder="First name" />
+      <input type="text" name="last_name" placeholder="Last name" />
+      <input type="submit" value="Sign up" />
+    </form>
+  </div>
+</div>
