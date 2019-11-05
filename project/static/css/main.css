@@ -258,10 +258,15 @@ main article .content {
   flex-direction: column;
   text-decoration: none;
   width: 100%;
+  border: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
 .tease-event a:hover, .tease-event a:focus, article.promote a:hover .tease-event__body {
   background: black;
   color: #ddd;
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
 .tease-event__img {
   height: 15em;
