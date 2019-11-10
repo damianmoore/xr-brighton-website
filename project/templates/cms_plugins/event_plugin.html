@@ -48,22 +48,22 @@
                 <div class="tease-event__details">
                   <div>
                     <div class="tease-event__date-long">
-                      <div itemprop="startDate" content="{{ event.start|date:"c" }}">
+                      <div>
                         {% if event.finish and event.finish.date != event.start.date %}<strong>From:</strong><br />{% endif %}
-                        {{ event.start|date:"jS M Y" }}<br />
-                        <span class="start">{{ event.start|date:"H:i" }}{% if event.finish and event.finish.date == event.start.date %} - {{ event.finish|date:"H:i" }}{% endif %}</span>
+                        <span itemprop="startDate" content="{{ event.start|date:"c" }}">{{ event.start|date:"jS M Y" }}</span><br />
+                        <span class="start">{{ event.start|date:"H:i" }}{% if event.finish and event.finish.date == event.start.date %} - <span itemprop="endDate" content="{{ event.finish|date:"c" }}">{{ event.finish|date:"H:i" }}</span>{% endif %}</span>
                       </div>
                       {% if event.finish and event.finish.date != event.start.date %}
                         <div class="divider">–</div>
-                        <div itemprop="endDate" content="{{ event.finish|date:"c" }}">
+                        <div>
                           <strong>Until:</strong><br />
-                          {{ event.finish|date:"jS M Y" }}<br />
+                          <span itemprop="endDate" content="{{ event.finish|date:"c" }}">{{ event.finish|date:"jS M Y" }}</span><br />
                           <span class="start">{{ event.finish|date:"H:i" }}</span>
                         </div>
                       {% endif %}
                     </div>
                     {% if event.location %}
-                      <div class="tease-event__location" itemprop="location">
+                      <div class="tease-event__location" itemprop="location" itemscope itemtype="http://schema.org/Text">
                         {{ event.location }}
                       </div>
                     {% endif %}
