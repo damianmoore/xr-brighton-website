@@ -26,7 +26,7 @@
   <div class="events-list">
     <ul class="item-list item-list--three">
       {% for event in events %}
-        <li>
+        <li itemscope itemtype="http://schema.org/Event">
           <article class="tease tease-event is-multi-day{% if event.promote %} promote{% endif %}" id="tease-4624">
             <a href="/event/{{ event.slug }}/">
               <div class="tease-event__img" style="background-image: url('{% thumbnail event.image 800x800 quality=60 %}')"></div>
@@ -44,26 +44,26 @@
                 {% endif %}
               </div>
               <div class="tease-event__body">
-                <h2>{{ event.name }}</h2>
+                <h2 itemprop="name">{{ event.name }}</h2>
                 <div class="tease-event__details">
                   <div>
                     <div class="tease-event__date-long">
-                      <div>
-                        {% if event.finish and event.finish.date != event.start.date %}<strong>From:</strong><br>{% endif %}
-                        {{ event.start|date:"jS M Y" }}<br>
+                      <div itemprop="startDate" content="{{ event.start|date:"c" }}">
+                        {% if event.finish and event.finish.date != event.start.date %}<strong>From:</strong><br />{% endif %}
+                        {{ event.start|date:"jS M Y" }}<br />
                         <span class="start">{{ event.start|date:"H:i" }}{% if event.finish and event.finish.date == event.start.date %} - {{ event.finish|date:"H:i" }}{% endif %}</span>
                       </div>
                       {% if event.finish and event.finish.date != event.start.date %}
                         <div class="divider">–</div>
-                        <div>
-                          <strong>Until:</strong><br>
-                          {{ event.finish|date:"jS M Y" }}<br>
+                        <div itemprop="endDate" content="{{ event.finish|date:"c" }}">
+                          <strong>Until:</strong><br />
+                          {{ event.finish|date:"jS M Y" }}<br />
                           <span class="start">{{ event.finish|date:"H:i" }}</span>
                         </div>
                       {% endif %}
                     </div>
                     {% if event.location %}
-                      <div class="tease-event__location">
+                      <div class="tease-event__location" itemprop="location">
                         {{ event.location }}
                       </div>
                     {% endif %}
