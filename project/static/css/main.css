@@ -342,6 +342,9 @@ article.promote .tease-event__body {
   background: #21a73d;
   color: #fff;
 }
+.event-image-location {
+  display: none;
+}
 
 .cms-toolbar-expanded header .page-header__wrap {
   margin-top: 46px;

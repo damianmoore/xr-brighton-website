@@ -26,10 +26,10 @@
   <div class="events-list">
     <ul class="item-list item-list--three">
       {% for event in events %}
-        <li itemscope itemtype="http://schema.org/Event">
-          <article class="tease tease-event is-multi-day{% if event.promote %} promote{% endif %}" id="tease-4624">
+        <li>
+          <article class="tease tease-event is-multi-day{% if event.promote %} promote{% endif %}">
             <a href="/event/{{ event.slug }}/">
-              <div class="tease-event__img" style="background-image: url('{% thumbnail event.image 800x800 quality=60 %}')" itemprop="image" content="{% thumbnail event.image 800x800 quality=60 %}"></div>
+              <div class="tease-event__img" style="background-image: url('{% thumbnail event.image 800x800 quality=60 %}')" content="{% thumbnail event.image 800x800 quality=60 %}"></div>
               <div class="tease-event__date-small">
                 <div>
                   <span class="day">{{ event.start|date:"d" }}</span>
@@ -44,27 +44,27 @@
                 {% endif %}
               </div>
               <div class="tease-event__body">
-                <h2 itemprop="name">{{ event.name }}</h2>
+                <h2>{{ event.name }}</h2>
                 <div class="tease-event__details">
                   <div>
                     <div class="tease-event__date-long">
                       <div>
                         {% if event.finish and event.finish.date != event.start.date %}<strong>From:</strong><br />{% endif %}
-                        <span itemprop="startDate" content="{{ event.start|date:"c" }}">{{ event.start|date:"jS M Y" }}</span><br />
-                        <span class="start">{{ event.start|date:"H:i" }}{% if event.finish and event.finish.date == event.start.date %} - <span itemprop="endDate" content="{{ event.finish|date:"c" }}">{{ event.finish|date:"H:i" }}</span>{% endif %}</span>
+                        {{ event.start|date:"jS M Y" }}<br />
+                        <span class="start">{{ event.start|date:"H:i" }}{% if event.finish and event.finish.date == event.start.date %} - {{ event.finish|date:"H:i" }}{% endif %}</span>
                       </div>
                       {% if event.finish and event.finish.date != event.start.date %}
                         <div class="divider">–</div>
                         <div>
                           <strong>Until:</strong><br />
-                          <span itemprop="endDate" content="{{ event.finish|date:"c" }}">{{ event.finish|date:"jS M Y" }}</span><br />
+                          {{ event.finish|date:"jS M Y" }}<br />
                           <span class="start">{{ event.finish|date:"H:i" }}</span>
                         </div>
                       {% endif %}
                     </div>
                     {% if event.location %}
-                      <div class="tease-event__location" itemprop="location" itemscope itemtype="http://schema.org/Place">
-                        <span itemprop="address">{{ event.location }}</span>
+                      <div class="tease-event__location">
+                        {{ event.location }}
                       </div>
                     {% endif %}
                     {% if event.category.name %}
