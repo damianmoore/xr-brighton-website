@@ -61,7 +61,7 @@ class EventAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'start', 'finish', 'location', 'description', 'category', 'image', 'promote', 'latitude', 'longitude',),
+            'fields': ('name', 'start', 'finish', 'description', 'facebook_link', 'eventbrite_link', 'other_link', 'category', 'image', 'location', 'promote', 'latitude', 'longitude',),
         }),
     ) + VersionedAdmin.fieldsets
 

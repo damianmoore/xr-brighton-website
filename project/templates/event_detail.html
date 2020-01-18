@@ -34,6 +34,9 @@
       <br/>
       <h3>{{ event.location }}</h3>
       {{ description|safe }}
+      {% if event.facebook_link %}<a href="{{ event.facebook_link }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">View Event on Facebook</a>{% endif %}
+      {% if event.eventbrite_link %}<a href="{{ event.eventbrite_link }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">View Event on Eventbrite</a>{% endif %}
+      {% if event.other_link %}<a href="{{ event.other_link }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">View more details</a>{% endif %}
     </div>
   </article>
 {% endblock content %}
