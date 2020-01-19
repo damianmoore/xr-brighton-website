@@ -36,8 +36,8 @@
       <div itemprop="description">
         {{ description|safe }}
       </div>
+      {% if event.eventbrite_link %}<a href="{{ event.eventbrite_link }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">Tickets on Eventbrite</a>{% endif %}
       {% if event.facebook_link %}<a href="{{ event.facebook_link }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">View Event on Facebook</a>{% endif %}
-      {% if event.eventbrite_link %}<a href="{{ event.eventbrite_link }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">View Event on Eventbrite</a>{% endif %}
       {% if event.other_link %}<a href="{{ event.other_link }}" rel="nofollow" class="btn btn--primary-dark" target="_blank">View more details</a>{% endif %}
       {% if event.image %}<span class="event-image-location" itemprop="image">{% thumbnail event.image 1920x960 quality=75 crop %}</span>{% endif %}
     </div>
