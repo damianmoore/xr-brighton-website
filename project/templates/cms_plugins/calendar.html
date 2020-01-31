@@ -1,0 +1,33 @@
+<div class="calendar">
+{% for year in years %}
+    <h1>{{year.year}}</h1>
+    {% for month in year.months %}
+    <div class="month">
+        <h2>{{month.month}}</h2>
+        <div class="daysOfWeek">
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div>Saturday</div>
+            <div>Sunday</div>
+        </div>
+        {% for spacer in month.spacerDays %}
+            <div class="spacer"></div>
+        {% endfor %}
+        {% for day in month.days %} 
+            <div class="day {% if day.hasPromoted %}promoted{% endif %} {% if day.inPast %}past{% endif %}">
+                <div class="dayName">{{day.dayName}}</div>
+                <h3 class="number">{{day.day}}</h3>
+                <div class="events">
+                    {% for event in day.events%}
+                        <a href="/event/{{ event.slug }}/"> <div class="event">{{event.name}}</div></a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+{% endfor %}
+</div>
