@@ -1,5 +1,4 @@
 from datetime import date, datetime
-from collections import defaultdict
 import calendar
 
 from cms.plugin_base import CMSPluginBase
