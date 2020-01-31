@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='CalendarPluginModel',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='project_calendarpluginmodel', serialize=False, to='cms.CMSPlugin')),
-                ('limit', models.IntegerField(null=True))
+                ('show_more', models.BooleanField(default=False))
             ],
             options={
                 'abstract': False,
