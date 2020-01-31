@@ -47,6 +47,9 @@ class EventManager(models.Manager):
 
     def in_past(self):
         return self.get_queryset().filter(Q(start__lt=timezone.now()) & (Q(finish__isnull=True) | Q(finish__lt=timezone.now())))
+    
+    def in_future_and_current_month(self):
+        return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()) | Q(start__month = timezone.now().month))
 
 class Event(VersionedModel):
     name            = models.CharField(max_length=100)
