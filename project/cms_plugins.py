@@ -75,7 +75,7 @@ class Calendar(CMSPluginBase):
         return list(map(lambda month: {'month': calendar.month_name[month], 'days': self.get_events_for_month(month, year), 'spacerDays': range(0, calendar.monthrange(year, month)[0])}, self.get_months_with_events(year)))
    
     def get_events_for_month(self, month, year):
-        return list(map(lambda day: {'day': day, 'events': self.get_events_for_day(day, month, year), 'hasPromoted' : self.day_has_promoted(day, month, year), 'inPast' : datetime(year, month, day) < datetime.now(), 'dayName' : datetime(year, month, day).strftime("%A")}, range(1, calendar.monthrange(year, month)[1]+1)))
+        return list(map(lambda day: {'day': day, 'events': self.get_events_for_day(day, month, year), 'hasPromoted' : self.day_has_promoted(day, month, year), 'inPast' : date(year, month, day) < date.today(), 'dayName' : datetime(year, month, day).strftime("%A")}, range(1, calendar.monthrange(year, month)[1]+1)))
 
     def get_events_for_day(self, day, month, year):
         return list(filter(lambda event: event.start.year == year and event.start.month == month and event.start.day == day, self.calendarItems))
