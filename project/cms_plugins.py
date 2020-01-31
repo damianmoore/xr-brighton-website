@@ -1,11 +1,12 @@
 from datetime import date, datetime
 import calendar
 
+from cms.models.pluginmodel import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext as _
 
-from .models import EventPluginModel, Event, Category, ArticlePluginModel, Article,CalendarPluginModel
+from .models import EventPluginModel, Event, Category, ArticlePluginModel, Article
 
 
 @plugin_pool.register_plugin  # register the plugin
@@ -57,7 +58,7 @@ class ArticlePublisher(CMSPluginBase):
 
 @plugin_pool.register_plugin
 class Calendar(CMSPluginBase):
-    model = CalendarPluginModel
+    model = CMSPlugin
     module = _('Events')
     name = _('Calendar Plugin')
     render_template = "cms_plugins/calendar.html"
