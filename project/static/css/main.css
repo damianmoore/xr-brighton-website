@@ -743,67 +743,7 @@ footer .social-nav {
 }
 
 
-@media screen and (max-width: 960px) {
-  .events-widget {
-    padding: 0 20px;
-  }
-  header .page-header__content {
-    padding: 20px 0;
-    align-items: start;
-  }
-  .page-header .social-nav {
-    display: none;
-  }
-  header .page-header__wrap {
-    padding: 0 10px;
-  }
-  header .donate {
-    margin: 0 0 0 1em;
-  }
-  .mailinglist-form input {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width:720px){
-  .calendar div.day
-  {
-    width:100%;
-    margin-bottom:5px;
-  }
-  .calendar div.month > div.daysOfWeek
-  {
-    display: none;
-  }
-  .calendar .dayName{
-    display:inline-block;
-
-  }
-  .calendar .events a{
-    width:75%;
-  }
-  .calendar div.spacer,
-  .calendar div.past {
-    display:none
-  }
-}
-
-@media screen and (max-width: 600px) {
-  header .location {
-    margin-left: 5px;
-  }
-  header .page-header__wrap {
-    padding: 0 20px;
-  }
-  .nav-main {
-    display: none;
-  }
-  .donate--head {
-    display: none;
-  }
-  #hamburger {
-    display: block;
-  }
+  display: none;
 }
 div.humans {
   margin: 0 auto;
@@ -841,7 +781,7 @@ div.human:hover a {
 div.humandetail {
   width: 50%;
   margin: 0 auto;
-  margin-top: 90px;
+  margin-top: 100px;
 }
 div.humandetail .info {
   width: 100%;
@@ -881,4 +821,79 @@ div.humandetail img {
 div.humandetail img.landscape {
   width: 100%;
   display: inline-block;
+}
+@media screen and (max-width: 1450px) {
+  div.humandetail {
+    margin-top: 130px;
+    width: 75%;
+  }
+}
+@media screen and (max-width: 960px) {
+  .events-widget {
+    padding: 0 20px;
+  }
+  header .page-header__content {
+    padding: 20px 0;
+    align-items: start;
+  }
+  .page-header .social-nav {
+    display: none;
+  }
+  header .page-header__wrap {
+    padding: 0 10px;
+  }
+  header .donate {
+    margin: 0 0 0 1em;
+  }
+  .mailinglist-form input {
+    width: 100%;
+  }
+  div.humandetail {
+    margin-top: 150px;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .calendar div.day {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .calendar div.month > div.daysOfWeek {
+    display: none;
+  }
+  .calendar .dayName {
+    display: inline-block;
+  }
+  .calendar .events a {
+    width: 75%;
+  }
+  .calendar div.spacer,
+  .calendar div.past {
+    display: none;
+  }
+  div.humandetail .images {
+    width: 100%;
+  }
+  div.humandetail .text {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header .location {
+    margin-left: 5px;
+  }
+  header .page-header__wrap {
+    padding: 0 20px;
+  }
+  .nav-main {
+    display: none;
+  }
+  .donate--head {
+    display: none;
+  }
+  #hamburger {
+    display: block;
+  }
 }
