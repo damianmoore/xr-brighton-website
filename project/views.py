@@ -72,3 +72,8 @@ def arrestee_details(request):
         return HttpResponseRedirect('/arrestee-details/confirmation')
 
     return render(request, 'arrestee_details.html', {})
+def humans_of_xr(request, id=None):
+    if id != None:
+        return render(request, 'human.html', {'human': Human.objects.get(id=id)})
+    else:
+        return render(request, 'humans-of-xr.html', {'humans': Human.objects.filter()})

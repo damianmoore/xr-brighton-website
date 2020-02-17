@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^arrestee-details/', arrestee_details),
     url(r'^event/(?P<slug>[\w-]+)/$', event_detail),
     url(r'^news/(?P<slug>[\w-]+)/$', article_detail),
+    url(r'^human/(\d+)/$', humans_of_xr),
+    url(r'^humans-of-xr/', humans_of_xr),
     url(r'^', include('cms.urls')),
 ]
 

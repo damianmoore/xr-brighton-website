@@ -118,3 +118,20 @@ class ArresteeAdmin(VersionedAdmin):
             'fields': ('name', 'contact_details', 'observer_name'),
         }),
     ) + VersionedAdmin.fieldsets
+class HumanImageInline(admin.StackedInline):
+    model = HumanImage
+    max_num = 10
+    extra = 0
+
+
+@admin.register(Human)
+class HumanAdmin(VersionedAdmin):
+    list_display = ['name', 'created_at']
+    list_ordering = ['-created_at']
+    list_filter = ['created_at']
+    search_fields = ['name']
+    inlines = [HumanImageInline]
+    fieldsets = (
+        (None, {
+            'fields': ['name', 'text', 'group'],
+        }),

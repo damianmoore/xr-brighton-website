@@ -805,3 +805,80 @@ footer .social-nav {
     display: block;
   }
 }
+div.humans {
+  margin: 0 auto;
+  padding-top: 30px;
+  width: 50%;
+}
+div.human {
+  width: 33%;
+  height: auto;
+  display: inline-block;
+  position: relative;
+}
+
+div.human a {
+  font-family: "FucXed", sans-serif;
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 300px;
+  left: 0;
+  top: 0;
+}
+div.human:hover img {
+  background-color: #000;
+  opacity: 0.5;
+}
+div.human:hover a {
+  visibility: visible;
+}
+
+div.humandetail {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 90px;
+}
+div.humandetail .info {
+  width: 100%;
+  font-family: "FucXed", sans-serif;
+  font-size: 30px;
+}
+div.humandetail .content {
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  height: 100%;
+}
+div.humandetail .info .group {
+  color: #21a73d;
+  font-size: 20px;
+  border-bottom: 1px #000 solid;
+}
+div.humandetail .images {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: auto;
+}
+div.humandetail .text {
+  font-family: "Crimson Text", sans-serif;
+  font-size: 20px;
+  position: relative;
+  float: left;
+  width: 49%;
+  padding: 10px;
+  text-align: center;
+}
+div.humandetail img {
+  width: 50%;
+  float: left;
+}
+div.humandetail img.landscape {
+  width: 100%;
+  display: inline-block;
+}

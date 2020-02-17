@@ -181,3 +181,14 @@ class Arrestee(VersionedModel):
     name            = models.CharField(max_length=100)
     contact_details = models.CharField(max_length=100, blank=True, null=True)
     observer_name   = models.CharField(max_length=100)
+class Human(VersionedModel):
+    name = models.CharField(max_length=100)
+    text = models.TextField()
+    group = models.CharField(max_length=100)
+
+
+class HumanImage(models.Model):
+    image = FilerImageField(
+        null=True, blank=True, on_delete=models.SET_NULL, related_name='human_image')
+    landscape = models.BooleanField(default=False)
+    human = models.ForeignKey(Human)
