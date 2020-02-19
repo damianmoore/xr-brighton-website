@@ -739,10 +739,6 @@ footer .social-nav {
 }
 .calendar .dayName{
   font-family: "FucXed", sans-serif;
-  display:none;
-}
-
-
   display: none;
 }
 div.humans {
@@ -757,6 +753,10 @@ div.human {
   position: relative;
 }
 
+div.human img {
+  width: 100%;
+  height: auto;
+}
 div.human a {
   font-family: "FucXed", sans-serif;
   font-size: 30px;
@@ -824,8 +824,13 @@ div.humandetail img.landscape {
 }
 @media screen and (max-width: 1450px) {
   div.humandetail {
+  div.humandetail,
+  div.humans {
     margin-top: 130px;
     width: 75%;
+  }
+  div.human {
+    width: 49%;
   }
 }
 @media screen and (max-width: 960px) {
@@ -851,6 +856,9 @@ div.humandetail img.landscape {
   div.humandetail {
     margin-top: 150px;
     width: 95%;
+  }
+  div.humans {
+    margin-top: 150px;
   }
 }
 
@@ -895,5 +903,15 @@ div.humandetail img.landscape {
   }
   #hamburger {
     display: block;
+  }
+  div.humandetail {
+    margin-top: 130px;
+  }
+  div.humans {
+    margin-top: 100px;
+    width: 100%;
+  }
+  div.human {
+    width: 100%;
   }
 }

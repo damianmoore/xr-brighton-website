@@ -17,7 +17,7 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
-    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    url(r'^robots\.txt$', TemplateView.as_view(
     url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^mailinglist/', include('mailinglist.urls')),
     url(r'^arrestee-details/confirmation', TemplateView.as_view(template_name='arrestee_details_confirmation.html')),
