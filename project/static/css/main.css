@@ -739,10 +739,100 @@ footer .social-nav {
 }
 .calendar .dayName{
   font-family: "FucXed", sans-serif;
-  display:none;
+  display: none;
+}
+div.humans {
+  margin: 0 auto;
+  padding-top: 30px;
+  width: 50%;
+}
+div.human {
+  width: 33%;
+  height: auto;
+  display: inline-block;
+  position: relative;
 }
 
+div.human img {
+  width: 100%;
+  height: auto;
+}
+div.human a {
+  font-family: "FucXed", sans-serif;
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 300px;
+  left: 0;
+  top: 0;
+}
+div.human:hover img {
+  background-color: #000;
+  opacity: 0.5;
+}
+div.human:hover a {
+  visibility: visible;
+}
 
+div.humandetail {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+div.humandetail .info {
+  width: 100%;
+  font-family: "FucXed", sans-serif;
+  font-size: 30px;
+}
+div.humandetail .content {
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  height: 100%;
+}
+div.humandetail .info .group {
+  color: #21a73d;
+  font-size: 20px;
+  border-bottom: 1px #000 solid;
+}
+div.humandetail .images {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: auto;
+}
+div.humandetail .text {
+  font-family: "Crimson Text", sans-serif;
+  font-size: 20px;
+  position: relative;
+  float: left;
+  width: 49%;
+  padding: 10px;
+  text-align: center;
+}
+div.humandetail img {
+  width: 50%;
+  float: left;
+}
+div.humandetail img.landscape {
+  width: 100%;
+  display: inline-block;
+}
+@media screen and (max-width: 1450px) {
+  div.humandetail {
+  div.humandetail,
+  div.humans {
+    margin-top: 130px;
+    width: 75%;
+  }
+  div.human {
+    width: 49%;
+  }
+}
 @media screen and (max-width: 960px) {
   .events-widget {
     padding: 0 20px;
@@ -763,28 +853,38 @@ footer .social-nav {
   .mailinglist-form input {
     width: 100%;
   }
+  div.humandetail {
+    margin-top: 150px;
+    width: 95%;
+  }
+  div.humans {
+    margin-top: 150px;
+  }
 }
 
-@media screen and (max-width:720px){
-  .calendar div.day
-  {
-    width:100%;
-    margin-bottom:5px;
+@media screen and (max-width: 720px) {
+  .calendar div.day {
+    width: 100%;
+    margin-bottom: 5px;
   }
-  .calendar div.month > div.daysOfWeek
-  {
+  .calendar div.month > div.daysOfWeek {
     display: none;
   }
-  .calendar .dayName{
-    display:inline-block;
-
+  .calendar .dayName {
+    display: inline-block;
   }
-  .calendar .events a{
-    width:75%;
+  .calendar .events a {
+    width: 75%;
   }
   .calendar div.spacer,
   .calendar div.past {
-    display:none
+    display: none;
+  }
+  div.humandetail .images {
+    width: 100%;
+  }
+  div.humandetail .text {
+    width: 100%;
   }
 }
 
@@ -803,5 +903,15 @@ footer .social-nav {
   }
   #hamburger {
     display: block;
+  }
+  div.humandetail {
+    margin-top: 130px;
+  }
+  div.humans {
+    margin-top: 100px;
+    width: 100%;
+  }
+  div.human {
+    width: 100%;
   }
 }
