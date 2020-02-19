@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event, Article, ArticleSource, Arrestee
+from .models import Category, Event, Article, ArticleSource, Arrestee, Human, HumanImage
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -50,6 +50,7 @@ class EventFuturePastFilter(admin.SimpleListFilter):
                 event_ids = Event.objects.in_past().values_list('id', flat=True)
                 return queryset.filter(id__in=event_ids)
         return queryset.all()
+
 
 @admin.register(Event)
 class EventAdmin(VersionedAdmin):
@@ -118,6 +119,8 @@ class ArresteeAdmin(VersionedAdmin):
             'fields': ('name', 'contact_details', 'observer_name'),
         }),
     ) + VersionedAdmin.fieldsets
+
+
 class HumanImageInline(admin.StackedInline):
     model = HumanImage
     max_num = 10
@@ -131,7 +134,9 @@ class HumanAdmin(VersionedAdmin):
     list_filter = ['created_at']
     search_fields = ['name']
     inlines = [HumanImageInline]
+
     fieldsets = (
         (None, {
             'fields': ['name', 'text', 'group'],
         }),
+    ) + VersionedAdmin.fieldsets
