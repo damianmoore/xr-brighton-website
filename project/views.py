@@ -13,7 +13,7 @@ def event_detail(request, slug):
     event = Event.objects.get(slug=slug)
 
     regex = r'([^\"])(http[s]*:\/\/[\w\S]+[\w\/]+)'
-    description = re.sub(regex, lambda url: '{0}[{1}]({1})'.format(
+    description = re.sub(regex, lambda url: '{0}[{1}]({1})'.format(url.group(1), url.group(2)), event.description)
     description = markdown.markdown(description)
 
     return render(request, 'event_detail.html', {
