@@ -6,7 +6,7 @@ from django.shortcuts import render
 import markdown
 import requests
 
-from .models import Event, Article, Arrestee
+from .models import Event, Article, Arrestee, Human
 
 
 def event_detail(request, slug):
@@ -72,6 +72,8 @@ def arrestee_details(request):
         return HttpResponseRedirect('/arrestee-details/confirmation')
 
     return render(request, 'arrestee_details.html', {})
+
+
 def humans_of_xr(request, id=None):
     if id != None:
         return render(request, 'human.html', {'human': Human.objects.get(id=id)})
