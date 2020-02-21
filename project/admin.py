@@ -53,6 +53,7 @@ class EventFuturePastFilter(admin.SimpleListFilter):
 
 @admin.register(Event)
 class EventAdmin(VersionedAdmin):
+    save_as = True
     list_display = ('name', 'date_short', 'category', 'promote', 'future_past')
     list_ordering = ('-start',)
     list_filter = (EventFuturePastFilter, 'category')
