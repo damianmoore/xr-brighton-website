@@ -54,6 +54,7 @@ class EventFuturePastFilter(admin.SimpleListFilter):
 
 @admin.register(Event)
 class EventAdmin(VersionedAdmin):
+    save_as = True #Save as new" button instead of "Save and add another"
     list_display = ('name', 'date_short', 'category', 'promote', 'future_past')
     list_ordering = ('-start',)
     list_filter = (EventFuturePastFilter, 'category')
