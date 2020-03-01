@@ -647,6 +647,10 @@ footer .social-nav {
 .mailinglist-inner {
   max-width: 800px;
   margin: 0 auto;
+  text-align: center;
+}
+.mailinglist-form .btn {
+  margin: 15px 0 15px 0;
 }
 
 .calendar div.month
