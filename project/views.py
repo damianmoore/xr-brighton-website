@@ -2,7 +2,7 @@ import datetime
 import re
 
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import markdown
 import requests
 
@@ -10,7 +10,7 @@ from .models import Event, Article, Arrestee, Human
 
 
 def event_detail(request, slug):
-    event = Event.objects.get(slug=slug)
+    event = get_object_or_404(Event, slug=slug)
 
     regex = r'([^\"])(http[s]*:\/\/[\w\S]+[\w\/]+)'
     description = re.sub(regex, lambda url: '{0}[{1}]({1})'.format(url.group(1), url.group(2)), event.description)
@@ -23,7 +23,7 @@ def event_detail(request, slug):
 
 
 def article_detail(request, slug):
-    article = Article.objects.get(slug=slug)
+    article = get_object_or_404(Article, slug=slug)
 
     regex = r'([^\"])(http[s]*:\/\/[\w\S]+[\w\/]+)'
     description = re.sub(regex, lambda url: '{0}[{1}]({1})'.format(url.group(1), url.group(2)), article.description)
@@ -75,7 +75,7 @@ def arrestee_details(request):
 
 
 def humans_of_xr(request, id=None):
-    if id != None:
+    if id:
         return render(request, 'human.html', {'human': Human.objects.get(id=id)})
     else:
         return render(request, 'humans-of-xr.html', {'humans': Human.objects.filter()})
