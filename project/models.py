@@ -41,6 +41,16 @@ class Category(VersionedModel):
     def __str__(self):
         return self.name
 
+class Group(VersionedModel):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = 'Groups'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
 class EventManager(models.Manager):
     def in_future(self):
         return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()))
@@ -61,6 +71,7 @@ class Event(VersionedModel):
     longitude       = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     description     = models.TextField(blank=True)
     category        = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
+    hosting_group   = models.ForeignKey(Group, on_delete=models.SET_NULL, blank=True, null=True)
     image           = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='event_image')
     promote         = models.BooleanField(default=False)
     facebook_link   = models.URLField(blank=True, null=True, help_text='Link to Facebook event URL')
