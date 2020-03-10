@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event, Article, ArticleSource, Arrestee, Human, HumanImage
+from .models import Category, Event, Article, ArticleSource, Arrestee, Human, HumanImage, Group
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -33,6 +33,16 @@ class CategoryAdmin(VersionedAdmin):
         }),
     ) + VersionedAdmin.fieldsets
 
+@admin.register(Group)
+class GroupAdmin(VersionedAdmin):
+    list_display = ('name',)
+    list_ordering = ('name',)
+
+    fieldsets = (
+        (None, {
+            'fields': ('name',),
+        }),
+    ) + VersionedAdmin.fieldsets
 
 class EventFuturePastFilter(admin.SimpleListFilter):
     title = 'future/past'
@@ -54,15 +64,15 @@ class EventFuturePastFilter(admin.SimpleListFilter):
 
 @admin.register(Event)
 class EventAdmin(VersionedAdmin):
-    list_display = ('name', 'date_short', 'category', 'promote', 'future_past')
+    list_display = ('name', 'date_short', 'category', 'promote', 'future_past', 'hosting_group')
     list_ordering = ('-start',)
     list_filter = (EventFuturePastFilter, 'category')
-    search_fields = ('name', 'slug', 'location', 'description', 'category__name')
+    search_fields = ('name', 'slug', 'location', 'description', 'category__name', 'hosting_group')
     exclude = ('slug',)
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'start', 'finish', 'description', 'facebook_link', 'eventbrite_link', 'other_link', 'category', 'image', 'location', 'promote', 'latitude', 'longitude',),
+            'fields': ('name', 'start', 'finish', 'description', 'facebook_link', 'eventbrite_link', 'other_link', 'category', 'hosting_group','image', 'location', 'promote', 'latitude', 'longitude',),
         }),
     ) + VersionedAdmin.fieldsets
 
