@@ -20,7 +20,7 @@
                     <p>{{ article.num_photos }} photos</p>
                   {% endif %}
                   <div class="tags tags--post-event">
-                    {% for source in article.sources.all %}
+                    {% for source in article.sources.all|slice:":10" %}
                       <span>{{ source.name }}</span>
                     {% endfor %}
                   </div>

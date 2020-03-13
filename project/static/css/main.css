@@ -647,9 +647,196 @@ footer .social-nav {
 .mailinglist-inner {
   max-width: 800px;
   margin: 0 auto;
+  text-align: center;
+}
+.mailinglist-form .btn {
+  margin: 15px 0 15px 0;
 }
 
+.calendar div.month
+{
+	margin-bottom: 10px;
+}
+.calendar div.month > h2
+{
+	border-bottom: #000 1px solid;
+}
+.calendar div.month > div.daysOfWeek
+{
+	width: 100%;
+}
+.calendar div.month > div.daysOfWeek > div
+{
+	float: left;
+	font-family: "FucXed", sans-serif;
+	text-align: center;
+	width: 13.5%;
+}
 
+.calendar div.day, .calendar div.spacer
+{
+	background-color: #F1F1F1;
+	color: #000;
+	display: inline-block;
+	height: 120px;
+	padding: 3px;
+	position: relative;
+  width: 13%;
+  overflow: hidden;
+}
+.calendar div.spacer{
+  background:none;
+}
+.calendar div.day.promoted
+{
+	background-color: #B3DBBB;
+}
+.calendar div.day.past
+{
+	background-color: #ff9999;
+}
+.calendar div.day > h3.number
+{
+	bottom: 5px;
+	color: #21a73d;
+	font-size: 45px;
+	margin-bottom: 0;
+	opacity: 30%;
+	position: absolute;
+	right: 5px;
+}
+.calendar div.day > div.events
+{
+	float: left;
+	position: relative;
+	width: 100%;
+}
+.calendar div.day > div.events > a > div.event
+{
+	color: #000;
+	font-family: "FucXed", sans-serif;
+  font-size: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar div.day > div.events > a:first-child:nth-last-child(1) > div{
+  -webkit-line-clamp: 4;
+}
+
+.calendar div.day > div.events > a
+{
+  max-width: 100%;
+  display: inline-block;
+}
+.calendar div.day > div.events > a:not(:last-child)
+{
+	border-bottom: 1px solid black;
+	padding-bottom: 2px;
+}
+.calendar div.day > div.events > a:not(:first-child)
+{
+	padding-top: 2px;
+}
+.calendar .dayName{
+  font-family: "FucXed", sans-serif;
+  display: none;
+}
+div.humans {
+  margin: 0 auto;
+  padding-top: 30px;
+  width: 50%;
+}
+div.human {
+  width: 33%;
+  height: auto;
+  display: inline-block;
+  position: relative;
+}
+
+div.human img {
+  width: 100%;
+  height: auto;
+}
+div.human a {
+  font-family: "FucXed", sans-serif;
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 300px;
+  left: 0;
+  top: 0;
+}
+div.human:hover img {
+  background-color: #000;
+  opacity: 0.5;
+}
+div.human:hover a {
+  visibility: visible;
+}
+
+div.humandetail {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+div.humandetail .info {
+  width: 100%;
+  font-family: "FucXed", sans-serif;
+  font-size: 30px;
+}
+div.humandetail .content {
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  height: 100%;
+}
+div.humandetail .info .group {
+  color: #21a73d;
+  font-size: 20px;
+  border-bottom: 1px #000 solid;
+}
+div.humandetail .images {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: auto;
+}
+div.humandetail .text {
+  font-family: "Crimson Text", sans-serif;
+  font-size: 20px;
+  position: relative;
+  float: left;
+  width: 49%;
+  padding: 10px;
+  text-align: center;
+}
+div.humandetail img {
+  width: 50%;
+  float: left;
+}
+div.humandetail img.landscape {
+  width: 100%;
+  display: inline-block;
+}
+@media screen and (max-width: 1450px) {
+  div.humandetail {
+  div.humandetail,
+  div.humans {
+    margin-top: 130px;
+    width: 75%;
+  }
+  div.human {
+    width: 49%;
+  }
+}
 @media screen and (max-width: 960px) {
   .events-widget {
     padding: 0 20px;
@@ -670,7 +857,41 @@ footer .social-nav {
   .mailinglist-form input {
     width: 100%;
   }
+  div.humandetail {
+    margin-top: 150px;
+    width: 95%;
+  }
+  div.humans {
+    margin-top: 150px;
+  }
 }
+
+@media screen and (max-width: 720px) {
+  .calendar div.day {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .calendar div.month > div.daysOfWeek {
+    display: none;
+  }
+  .calendar .dayName {
+    display: inline-block;
+  }
+  .calendar .events a {
+    width: 75%;
+  }
+  .calendar div.spacer,
+  .calendar div.past {
+    display: none;
+  }
+  div.humandetail .images {
+    width: 100%;
+  }
+  div.humandetail .text {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   header .location {
     margin-left: 5px;
@@ -686,5 +907,15 @@ footer .social-nav {
   }
   #hamburger {
     display: block;
+  }
+  div.humandetail {
+    margin-top: 130px;
+  }
+  div.humans {
+    margin-top: 100px;
+    width: 100%;
+  }
+  div.human {
+    width: 100%;
   }
 }

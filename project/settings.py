@@ -176,7 +176,7 @@ CMS_TEMPLATES = (
     ('sidebar_right.html', 'Sidebar Right')
 )
 
-CMS_PERMISSION = True
+CMS_PERMISSION = False
 
 CMS_PLACEHOLDER_CONF = {}
 

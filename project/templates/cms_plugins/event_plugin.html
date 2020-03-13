@@ -72,6 +72,11 @@
                         <span>{{ event.category.name }}</span>
                       </div>
                     {% endif %}
+                    {% if event.hosting_group.name %}
+                      <div class="tags tags--post-event">
+                        <span>{{ event.hosting_group.name }}</span>
+                      </div>
+                    {% endif %}
                   </div>
                   <div class="tease-event__btn">
                     <span class="btn btn--primary-dark">Find out more</span>

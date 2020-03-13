@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load cms_tags thumbnail %}
+
+{% block title %}{{ event.name }}{% endblock title %}
+{% block description %}{{ event.description|slice:":500" }}{% endblock description %}
+{% block og_title %}{{ event.name }}{% endblock og_title %}
+{% block og_description %}{{ event.description|slice:":500" }}{% endblock og_description %}
+{% block og_image %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else%}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image %}
+{% block og_image_secure %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image_secure %}
+{% block twitter_title %}{{ event.name }}{% endblock twitter_title %}
+{% block twitter_description %}{{ event.description|slice:":500" }}{% endblock twitter_description %}
+{% block twitter_image %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg
+{% endif %}{% endblock twitter_image %}
+
+{% block content %}
+<div class="humans">
+    <h1>Humans of XR</h1>
+
+    {% for human in humans %}
+    <div class="human">
+        {% with human.humanimage_set.all|first as first_image %}<img src="{% thumbnail first_image.image 300x300 quality=100 crop %}"/>{% endwith %}
+        <a href="/human/{{human.id}}">{{human.name}}</a>
+    </div>
+{% endfor %}
+</div>
+{% endblock content %}

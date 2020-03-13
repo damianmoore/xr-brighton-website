@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load cms_tags thumbnail %}
+
+{% block title %}{{ event.name }}{% endblock title %}
+{% block description %}{{ event.description|slice:":500" }}{% endblock description %}
+{% block og_title %}{{ event.name }}{% endblock og_title %}
+{% block og_description %}{{ event.description|slice:":500" }}{% endblock og_description %}
+{% block og_image %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else%}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image %}
+{% block og_image_secure %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image_secure %}
+{% block twitter_title %}{{ event.name }}{% endblock twitter_title %}
+{% block twitter_description %}{{ event.description|slice:":500" }}{% endblock twitter_description %}
+{% block twitter_image %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg
+{% endif %}{% endblock twitter_image %}
+
+{% block content %}
+<div class="humandetail">
+    <div class="info">
+        <div class="name">{{human.name}}</div>
+        <div class="group">{{human.group}}</div>
+    </div>
+    <div class="content">
+        <div class="images">
+            {% for image in human.humanimage_set.all %} 
+                <img src="{{ image.image.url }}" class="{% if image.landscape %}landscape{%endif%}"/>
+            {% endfor %}
+        </div>
+        <div class="text">
+            {{human.text}}
+        </div>
+    </div>
+    <div style="clear:both"></div>
+</div>
+{% endblock content %}

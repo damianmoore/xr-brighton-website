@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event, Article, ArticleSource, Arrestee
+from .models import Category, Event, Article, ArticleSource, Arrestee, Human, HumanImage, Group
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -33,6 +33,16 @@ class CategoryAdmin(VersionedAdmin):
         }),
     ) + VersionedAdmin.fieldsets
 
+@admin.register(Group)
+class GroupAdmin(VersionedAdmin):
+    list_display = ('name',)
+    list_ordering = ('name',)
+
+    fieldsets = (
+        (None, {
+            'fields': ('name',),
+        }),
+    ) + VersionedAdmin.fieldsets
 
 class EventFuturePastFilter(admin.SimpleListFilter):
     title = 'future/past'
@@ -51,18 +61,19 @@ class EventFuturePastFilter(admin.SimpleListFilter):
                 return queryset.filter(id__in=event_ids)
         return queryset.all()
 
+
 @admin.register(Event)
 class EventAdmin(VersionedAdmin):
     save_as = True
-    list_display = ('name', 'date_short', 'category', 'promote', 'future_past')
+    list_display = ('name', 'date_short', 'category', 'promote', 'future_past', 'hosting_group')
     list_ordering = ('-start',)
     list_filter = (EventFuturePastFilter, 'category')
-    search_fields = ('name', 'slug', 'location', 'description', 'category__name')
+    search_fields = ('name', 'slug', 'location', 'description', 'category__name', 'hosting_group__name')
     exclude = ('slug',)
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'start', 'finish', 'description', 'facebook_link', 'eventbrite_link', 'other_link', 'category', 'image', 'location', 'promote', 'latitude', 'longitude',),
+            'fields': ('name', 'start', 'finish', 'description', 'facebook_link', 'eventbrite_link', 'other_link', 'category', 'hosting_group','image', 'location', 'promote', 'latitude', 'longitude',),
         }),
     ) + VersionedAdmin.fieldsets
 
@@ -117,5 +128,26 @@ class ArresteeAdmin(VersionedAdmin):
     fieldsets = (
         (None, {
             'fields': ('name', 'contact_details', 'observer_name'),
+        }),
+    ) + VersionedAdmin.fieldsets
+
+
+class HumanImageInline(admin.StackedInline):
+    model = HumanImage
+    max_num = 10
+    extra = 0
+
+
+@admin.register(Human)
+class HumanAdmin(VersionedAdmin):
+    list_display = ['name', 'created_at']
+    list_ordering = ['-created_at']
+    list_filter = ['created_at']
+    search_fields = ['name']
+    inlines = [HumanImageInline]
+
+    fieldsets = (
+        (None, {
+            'fields': ['name', 'text', 'group'],
         }),
     ) + VersionedAdmin.fieldsets

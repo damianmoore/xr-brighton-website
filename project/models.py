@@ -41,12 +41,25 @@ class Category(VersionedModel):
     def __str__(self):
         return self.name
 
+class Group(VersionedModel):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = 'Groups'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
 class EventManager(models.Manager):
     def in_future(self):
         return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()))
 
     def in_past(self):
         return self.get_queryset().filter(Q(start__lt=timezone.now()) & (Q(finish__isnull=True) | Q(finish__lt=timezone.now())))
+    
+    def in_future_and_current_month(self):
+        return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()) | Q(start__month = timezone.now().month))
 
 class Event(VersionedModel):
     name            = models.CharField(max_length=100)
@@ -58,6 +71,7 @@ class Event(VersionedModel):
     longitude       = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     description     = models.TextField(blank=True)
     category        = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
+    hosting_group   = models.ForeignKey(Group, on_delete=models.SET_NULL, blank=True, null=True)
     image           = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='event_image')
     promote         = models.BooleanField(default=False)
     facebook_link   = models.URLField(blank=True, null=True, help_text='Link to Facebook event URL')
@@ -178,3 +192,16 @@ class Arrestee(VersionedModel):
     name            = models.CharField(max_length=100)
     contact_details = models.CharField(max_length=100, blank=True, null=True)
     observer_name   = models.CharField(max_length=100)
+
+
+class Human(VersionedModel):
+    name = models.CharField(max_length=100)
+    text = models.TextField()
+    group = models.CharField(max_length=100)
+
+
+class HumanImage(models.Model):
+    image = FilerImageField(
+        null=True, blank=True, on_delete=models.SET_NULL, related_name='human_image')
+    landscape = models.BooleanField(default=False)
+    human = models.ForeignKey(Human)
