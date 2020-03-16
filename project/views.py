@@ -80,9 +80,9 @@ def humans_of_xr(request, id=None):
     else:
         return render(request, 'humans-of-xr.html', {'humans': Human.objects.filter()})
 
-def group_detail(request, id):
-    group = Group.objects.get(id=id)
-    events = Event.objects.filter(hosting_group=id)
+def group_detail(request, slug):
+    group = get_object_or_404(Group,slug=slug)
+    events = Event.objects.filter(hosting_group=group.id)
     return render(request, 'group_detail.html', {
         'group': group,
         'events': events

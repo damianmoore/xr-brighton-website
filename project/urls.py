@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^news/(?P<slug>[\w-]+)/$', article_detail),
     url(r'^human/(\d+)/$', humans_of_xr),
     url(r'^humans-of-xr/', humans_of_xr),
-    url(r'^group/(\d+)/$', group_detail),
+    url(r'^group/(?P<slug>[\w-]+)/$', group_detail),
     url(r'^', include('cms.urls')),
 ]
 

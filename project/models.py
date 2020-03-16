@@ -44,6 +44,7 @@ class Category(VersionedModel):
 class Group(VersionedModel):
     image                   = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='group_image')
     name                    = models.CharField(max_length=100)
+    slug                    = models.CharField(max_length=110, blank=True, null=True)
     short_description       = models.TextField(blank=False)
     video_url               = models.CharField(max_length=150, blank=True)
     long_description        = models.TextField(blank=True)
