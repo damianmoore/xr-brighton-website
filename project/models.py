@@ -42,7 +42,19 @@ class Category(VersionedModel):
         return self.name
 
 class Group(VersionedModel):
-    name = models.CharField(max_length=100)
+    image                   = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='group_image')
+    name                    = models.CharField(max_length=100)
+    short_description       = models.TextField(blank=False)
+    video_url               = models.CharField(max_length=150, blank=True)
+    long_description        = models.TextField(blank=True)
+    highlighted_article     = models.ForeignKey("Article", on_delete=models.SET_NULL, blank=True, null=True)
+    article_description     = models.TextField(blank=False)
+    email_address           = models.CharField(max_length=150, blank=True)
+    whatsapp_link           = models.CharField(max_length=150, blank=True)
+    telegram_link           = models.CharField(max_length=150, blank=True)
+    other_contact           = models.CharField(max_length=150, blank=True)
+    facebook_link           = models.CharField(max_length=150, blank=True)
+    instagram_handle        = models.CharField(max_length=150, blank=True)
 
     class Meta:
         verbose_name_plural = 'Groups'

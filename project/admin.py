@@ -40,7 +40,7 @@ class GroupAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('name',),
+            'fields': ('image','name','short_description','video_url','long_description','highlighted_article','article_description', 'email_address','whatsapp_link','telegram_link','other_contact','facebook_link','instagram_handle'),
         }),
     ) + VersionedAdmin.fieldsets
 
