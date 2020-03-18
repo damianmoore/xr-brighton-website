@@ -144,6 +144,7 @@ INSTALLED_APPS = [
     'djangocms_video',
     'project',
     'mailinglist',
+    'embed_video',
 ]
 
 LANGUAGES = (

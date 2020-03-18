@@ -25,3 +25,4 @@ pytz
 gunicorn
 mysqlclient
 Markdown
+django-embed-video

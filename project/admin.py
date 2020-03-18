@@ -37,10 +37,11 @@ class CategoryAdmin(VersionedAdmin):
 class GroupAdmin(VersionedAdmin):
     list_display = ('name',)
     list_ordering = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
     fieldsets = (
         (None, {
-            'fields': ('name',),
+            'fields': ('image', 'name', 'slug', 'short_description', 'video_url', 'long_description', 'highlighted_article', 'article_description', 'email_address', 'whatsapp_link', 'telegram_link', 'other_contact', 'facebook_link', 'instagram_handle'),
         }),
     ) + VersionedAdmin.fieldsets
 

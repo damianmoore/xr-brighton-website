@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load cms_tags thumbnail %}
+{% load embed_video_tags %}
+
+{% block title %}{{ event.name }}{% endblock title %}
+{% block description %}{{ event.description|slice:":500" }}{% endblock description %}
+{% block og_title %}{{ event.name }}{% endblock og_title %}
+{% block og_description %}{{ event.description|slice:":500" }}{% endblock og_description %}
+{% block og_image %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image %}
+{% block og_image_secure %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image_secure %}
+{% block twitter_title %}{{ event.name }}{% endblock twitter_title %}
+{% block twitter_description %}{{ event.description|slice:":500" }}{% endblock twitter_description %}
+{% block twitter_image %}{% if event.image %}https://xrbrighton.earth{% thumbnail event.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock twitter_image %}
+
+{% block content %}
+<head>
+    <link href="/static/css/group.css" rel="stylesheet" />
+</head>
+ <div class="group">
+    {% if group.image %}<div class="image" style="background-image: url({% thumbnail group.image 800x600 quality=100 crop %})"></div>{% endif %}
+    <h1>
+        {{group.name}}
+    </h1>
+    <div>
+        {{group.short_description}}
+    </div>
+    <div class="header">
+        <div class="top">
+            About
+        </div>  
+        <div class="bottom">
+            <span>Us</span> 
+        </div>
+    </div>
+        {% video group.video_url '640x480' %}
+    <div>
+        {{group.long_description}}
+    </div>
+    <div class="header">
+        <div class="top">
+            What
+        </div>  
+        <div class="bottom">
+           <span>We Do</span> 
+        </div>
+    </div>
+    <div class="group-article">
+        {% if group.highlighted_article.image %}<div class="image" style="background-image: url({% thumbnail group.highlighted_article.image 400x300 quality=100 crop %})">
+        </div>{% endif %}
+        <div class="group-article-info">
+            <h2>
+                <a href="/news/{{group.highlighted_article.slug}}">{{group.highlighted_article.name}}</a>
+            </h2>
+            <div>
+                {{group.highlighted_article.date}}
+            </div>
+            <div class="caption">
+                {{group.article_description}}
+            </div>
+        </div>
+    </div>
+    <div class="event-list">
+        {% for event in events %}
+            <div class="event">
+                <div class="image" style="background-image: url({% thumbnail event.image 400x300 quality=100 crop %})"></div>
+                <div class="event-info">
+                    <div class="eventTitle">{{event.name}}</div>
+                    <div>{{event.start}} - {{event.finish}}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="header">
+        <div class="top">
+            Where
+        </div>  
+        <div class="bottom">
+            <span>We Are</span> 
+        </div>
+    </div>
+
+    <div class="social-media">
+        {% if group.email_address %}
+            <div>Email : {{group.email_address}}</div>
+        {% endif %}
+        {% if group.whatsapp_link %}
+            <div>Whatsapp : {{group.whatsapp_link}}</div>
+        {% endif %}
+        {% if group.telegram_link %}
+            <div>Telegram : {{group.telegram_link}}</div>
+        {% endif %}
+        {% if group.other_contact %}
+            <div>Other : {{group.other_contact}}</div>
+        {% endif %}
+        {% if group.facebook_link %}
+            <div>Facebook : {{group.facebook_link}}</div>
+        {% endif %}
+        {% if group.facebook_link %}
+            <div>Instagram : @{{group.instagram_handle}}</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

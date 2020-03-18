@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 import markdown
 import requests
 
-from .models import Event, Article, Arrestee, Human
+from .models import Event, Article, Arrestee, Human, Group
 
 
 def event_detail(request, slug):
@@ -79,3 +79,11 @@ def humans_of_xr(request, id=None):
         return render(request, 'human.html', {'human': Human.objects.get(id=id)})
     else:
         return render(request, 'humans-of-xr.html', {'humans': Human.objects.filter()})
+
+def group_detail(request, slug):
+    group = get_object_or_404(Group,slug=slug)
+    events = Event.objects.filter(hosting_group=group.id)
+    return render(request, 'group_detail.html', {
+        'group': group,
+        'events': events
+    })
