@@ -90,6 +90,7 @@ class Event(VersionedModel):
     facebook_link   = models.URLField(blank=True, null=True, help_text='Link to Facebook event URL')
     eventbrite_link = models.URLField(blank=True, null=True, help_text='Link to Eventbrite event URL')
     other_link      = models.URLField(blank=True, null=True, help_text='Link to any other event page URL')
+    online          = models.BooleanField(default=False)
 
     objects = EventManager()
 

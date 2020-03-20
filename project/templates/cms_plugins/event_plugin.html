@@ -77,6 +77,11 @@
                         <span>{{ event.hosting_group.name }}</span>
                       </div>
                     {% endif %}
+                    {% if event.online %}
+                    <div class="tags tags--post-event">
+                      <span>Online</span>
+                    </div>
+                  {% endif %}
                   </div>
                   <div class="tease-event__btn">
                     <span class="btn btn--primary-dark">Find out more</span>
