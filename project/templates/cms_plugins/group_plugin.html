@@ -1,0 +1,29 @@
+{% load thumbnail %}
+
+<div class="groups-widget container groups-widget--home full-width">
+    <div class="group-list">
+      <ul class="item-list item-list--three">
+        {% for group in groups %}
+          <li>
+            <article class="tease tease-group is-multi-day">
+              <a href="/group/{{ group.slug }}/">
+                <div class="tease-group__img" style="background-image: url('{% thumbnail group.image 800x800 quality=60 %}')" content="{% thumbnail group.image 800x800 quality=60 %}"></div>
+                <div class="tease-group__body">
+                  <h2>{{ group.name }}</h2>
+                  <div class="tease-group__details">
+                    <div class="tease-group__desc">
+                        {{ group.short_description}}
+                    </div>
+                    <div class="tease-group__btn">
+                      <span class="btn btn--primary-dark">Find out more</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
