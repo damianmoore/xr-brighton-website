@@ -1,0 +1,15 @@
+Converter Markup Guide
+
+** = Start of bold
+/* = End of bold
+-- = Start of emphasis
+/- = End of emphasis
+__ = Horizontal row
+# = Start of h1 (must be first character in line)
+/# = End of h1
+## = Start of h2 (must be first character in line)
+/## = End of h2
+### = Start of h3 (must be first character in line)
+/### = End of h3
+Empty Line = Paragraph break
+Double Space = Line Break
