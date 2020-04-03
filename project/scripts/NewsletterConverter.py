@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+# Usage : NewsletterConverter.py -i path-to-input-file -o path-to-output-file
+# Output file can be blank will use a default
+
 import sys, getopt, re
 
 def main(argv):
