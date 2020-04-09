@@ -6,7 +6,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext as _
 
-from .models import EventPluginModel, Event, Category, ArticlePluginModel, Article
+from .models import EventPluginModel, Event, Category, ArticlePluginModel, Article, Group
 
 
 @plugin_pool.register_plugin  # register the plugin
@@ -88,5 +88,20 @@ class Calendar(CMSPluginBase):
         context.update({
             'instance': instance,
             'years': self.format_events()
+        })
+        return context
+
+@plugin_pool.register_plugin  # register the plugin
+class GroupPublisher(CMSPluginBase):
+    model = CMSPlugin  # model where plugin data are saved
+    module = _('Groups')
+    name = _('Group Plugin')  # name of the plugin in the interface
+    render_template = 'cms_plugins/group_plugin.html'
+    cache = False
+
+    def render(self, context, instance, placeholder):
+        groups = Group.objects.order_by('name')
+        context.update({
+            'groups': groups,
         })
         return context

@@ -201,11 +201,11 @@ main article .content {
   box-shadow: inset 0 -50px 0 rgba(33, 167, 61, 0.5);
   -webkit-box-shadow: inset 0 -22px 0 rgba(33, 167, 61, 0.5);
 }
-.events-widget {
+.events-widget, .groups-widget {
   text-align: center;
   padding: 0 40px;
 }
-.events-widget .events-widget__title {
+.events-widget .events-widget__title, .groups-widget .groups-widget__title {
   margin-bottom: 2.5rem;
 }
 .item-list {
@@ -213,11 +213,11 @@ main article .content {
   display: flex;
   flex-wrap: wrap;
 }
-.events-list ul {
+.events-list ul,.group-list ul {
   padding: 0;
   list-style: none;
 }
-.events-list li > article {
+.events-list li > article,.group-list li > article {
   height: 100%;
 }
 .item-list > * {
@@ -240,19 +240,19 @@ main article .content {
     width: 33.33333%;
   }
 }
-.tease-event {
+.tease-event,.tease-group {
   text-align: left;
   background: #F1F1F1;
   width: 100%;
   text-align: left;
   display: flex;
 }
-.tease-event h2 {
+.tease-event h2,.tease-group h2 {
   font-size: 1.5625em;
   margin-bottom: .2em;
   line-height: 1.2;
 }
-.tease-event a {
+.tease-event a,.tease-group a {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -262,13 +262,17 @@ main article .content {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
-.tease-event a:hover, .tease-event a:focus, article.promote a:hover .tease-event__body {
+.tease-group__desc{
+  display: block  ;
+}
+.tease-event a:hover, .tease-event a:focus, article.promote a:hover .tease-group__body,
+  .tease-group a:hover, .tease-group a:focus, article.promote a:hover .tease-group__body {
   background: black;
   color: #ddd;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
-.tease-event__img {
+.tease-event__img,.tease-group__img  {
   height: 15em;
   overflow: hidden;
   background-size: cover;
@@ -319,22 +323,23 @@ main article .content {
   font-size: 18px;
   line-height: 1.2;
 }
-.tease-event__body {
+.tease-event__body,.tease-group__body {
   padding: 1.25em;
   display: flex;
   width: 100%;
   flex-direction: column;
   flex-grow: 1;
 }
-.tease-event__btn {
+.tease-event__btn,.tease-group__btn {
   text-align: center;
   margin-top: .625em;
 }
-.tease-event__btn span {
+.tease-event__btn span,.tease-group__btn span {
   font-size: 1.25rem;
   padding: .8125rem 1.875rem .6875rem;
 }
-.tease-event a:hover .btn, .tease-event a:hover .tags span, .tease-event a:focus .btn, .tease-event a:focus .tags span {
+.tease-event a:hover .btn, .tease-event a:hover .tags span, .tease-event a:focus .btn, .tease-event a:focus .tags span,
+  .tease-group a:hover .btn, .tease-group a:hover .tags span, .tease-group a:focus .btn, .tease-group a:focus .tags span {
   color: black;
   background: white;
 }
@@ -917,5 +922,8 @@ div.humandetail img.landscape {
   }
   div.human {
     width: 100%;
+  }
+  .tease-group__desc{
+    display:none;
   }
 }
