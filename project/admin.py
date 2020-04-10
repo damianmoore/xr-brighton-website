@@ -33,6 +33,7 @@ class CategoryAdmin(VersionedAdmin):
         }),
     ) + VersionedAdmin.fieldsets
 
+
 @admin.register(Group)
 class GroupAdmin(VersionedAdmin):
     list_display = ('name',)
@@ -44,6 +45,7 @@ class GroupAdmin(VersionedAdmin):
             'fields': ('image', 'name', 'slug', 'short_description', 'video_url', 'long_description', 'highlighted_article', 'article_description', 'email_address', 'whatsapp_link', 'telegram_link', 'other_contact', 'facebook_link', 'instagram_handle'),
         }),
     ) + VersionedAdmin.fieldsets
+
 
 class EventFuturePastFilter(admin.SimpleListFilter):
     title = 'future/past'

@@ -430,6 +430,26 @@ footer .page-footer__column {
 }
 footer .social-nav {
   justify-content: center;
+  display: inline-block;
+}
+footer .social-nav ul {
+  margin: 0 15px 0 0;
+}
+footer .social-nav ul li {
+  margin: 0 5px 0 0;
+}
+footer ul.links {
+  display: inline-block;
+  margin: 6px 0;
+  vertical-align: top;
+  padding: 0;
+}
+footer ul.links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+footer ul.links li a {
+  color: #fff;
 }
 
 .social-nav ul {
