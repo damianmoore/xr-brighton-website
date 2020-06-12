@@ -38,6 +38,7 @@ class EventPublisher(CMSPluginBase):
             'events': events,
             'categories': Category.objects.all(),
             'selected_category': selected_category,
+            'show_more': instance.show_more,
         })
         return context
 
@@ -51,9 +52,15 @@ class ArticlePublisher(CMSPluginBase):
     cache = False
 
     def render(self, context, instance, placeholder):
+        articles = Article.objects.order_by('-date')
+
+        if instance.limit:
+            articles = articles[:instance.limit]
+
         context.update({
             'instance': instance,
-            'articles': Article.objects.order_by('-date'),  
+            'articles': articles,
+            'show_more': instance.show_more,
         })
         return context
 
