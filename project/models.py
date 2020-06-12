@@ -135,7 +135,7 @@ class EventPluginModel(CMSPlugin):
     limit                   = models.IntegerField(null=True)
     show_more               = models.BooleanField(default=False)
     show_category_filters   = models.BooleanField(default=True)
-    show_only_promoted      = models.BooleanField(default=False)
+    prioritise_promoted     = models.BooleanField(default=False)
 
 
 PRESS_ARTICLE_SOURCES = (
