@@ -152,6 +152,7 @@ class Article(VersionedModel):
     description = models.TextField(blank=True)
     image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='article_image')
     gallery     = models.BooleanField(default=True, help_text='Pull in all images that are in the same folder as the article image and display as a gallery')
+    header      = models.BooleanField(default=True, help_text='Display article image throughout the site in the random header')
 
     class Meta:
         ordering = ('-date',)

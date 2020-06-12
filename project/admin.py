@@ -109,7 +109,7 @@ class ArticleAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('event', 'name', 'slug', 'date', 'description', 'image', 'gallery'),
+            'fields': ('event', 'name', 'slug', 'date', 'description', 'image', 'gallery', 'header'),
         }),
     ) + VersionedAdmin.fieldsets
     inlines = [

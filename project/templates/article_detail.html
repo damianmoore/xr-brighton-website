@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags thumbnail sekizai_tags %}
+{% load cms_tags thumbnail sekizai_tags header %}
 
 {% block title %}{{ article.article_name }}{% endblock title %}
 {% block description %}{{ article.description|slice:":500" }}{% endblock description %}
@@ -38,7 +38,7 @@
   {% endaddtoblock %}
 
   <article>
-    <div class="hero hero-large" style="background-image: url({% thumbnail article.image 1920x960 quality=75 crop %})"></div>
+    {% header image=article.image size='large' caption=header_caption %}
     <div class="content">
       <h1>{{ article.article_name }}</h1>
       <div class="tease-article__date-long">

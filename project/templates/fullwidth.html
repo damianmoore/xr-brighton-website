@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags %}
+{% load cms_tags header %}
 
 {% block description %}{% page_attribute "meta_description" %}{% endblock description %}
 {% block og_description %}{% page_attribute "meta_description" %}{% endblock og_description %}
@@ -10,7 +10,7 @@
 
 {% block content %}
 	<article>
-    <div class="hero"></div>
+    {% header %}
     <div class="content">
       {% placeholder "content" %}
     </div>
