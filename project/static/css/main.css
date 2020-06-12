@@ -141,7 +141,7 @@ main article .content {
   color: white;
 }
 .tags {
-  display: flex;
+  display: inline-flex;
   list-style: none;
   padding: 0;
   margin-bottom: 1.25em;
