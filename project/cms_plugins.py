@@ -25,7 +25,7 @@ class EventPublisher(CMSPluginBase):
             selected_category = int(context['request'].GET['category'])
             events = events.filter(category_id=selected_category)
 
-        if instance.show_only_promoted:
+        if instance.prioritise_promoted:
             promoted_events = events.filter(promote=True)
             if instance.limit and len(promoted_events) < instance.limit:
                 events = list(promoted_events) + list(events.exclude(id__in=[promoted_event.id for promoted_event in promoted_events])[:instance.limit-len(promoted_events)])
