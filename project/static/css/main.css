@@ -734,7 +734,7 @@ footer ul.links li a {
 }
 .calendar div.day.past
 {
-	background-color: #ff9999;
+	background-color: rgba(0,0,0,0.03);
 }
 .calendar div.day > h3.number
 {
@@ -746,6 +746,9 @@ footer ul.links li a {
 	position: absolute;
 	right: 5px;
 }
+.calendar div.day.past > h3.number {
+	opacity: 15%;
+}
 .calendar div.day > div.events
 {
 	float: left;
@@ -755,13 +758,16 @@ footer ul.links li a {
 .calendar div.day > div.events > a > div.event
 {
 	color: #000;
-	font-family: "FucXed", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.calendar div.day.past > div.events > a > div.event {
+  color: #666;
 }
 
 .calendar div.day > div.events > a:first-child:nth-last-child(1) > div{
@@ -771,12 +777,15 @@ footer ul.links li a {
 .calendar div.day > div.events > a
 {
   max-width: 100%;
-  display: inline-block;
+  display: block;
 }
 .calendar div.day > div.events > a:not(:last-child)
 {
-	border-bottom: 1px solid black;
-	padding-bottom: 2px;
+	border-bottom: 1px solid #666;
+	padding-bottom: 3px;
+}
+.calendar div.day > div.events > a:not(:last-child) {
+  border-color: #999;
 }
 .calendar div.day > div.events > a:not(:first-child)
 {
