@@ -32,6 +32,15 @@ ALLOWED_HOSTS = ['localhost', 'xrbrighton.epixstudios.co.uk', 'xrbrighton.earth'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
+ADMINS = (
+    ('Damian Moore', 'webmaster@epixstudios.co.uk'),
+)
+EMAIL_HOST = 'mail.epixstudios.co.uk'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'info@courchevel-1650.com'
+EMAIL_HOST_PASSWORD = 'mUiBRbea98a72Ug'
+EMAIL_USE_TLS = True
+
 
 # Application definition
 

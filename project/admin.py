@@ -70,13 +70,13 @@ class EventAdmin(VersionedAdmin):
     save_as = True
     list_display = ('name', 'date_short', 'category', 'promote', 'future_past', 'hosting_group')
     list_ordering = ('-start',)
-    list_filter = (EventFuturePastFilter, 'category')
+    list_filter = (EventFuturePastFilter, 'status', 'category')
     search_fields = ('name', 'slug', 'location', 'description', 'category__name', 'hosting_group__name')
     exclude = ('slug',)
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'start', 'finish', 'description', 'facebook_link', 'eventbrite_link', 'other_link', 'category', 'hosting_group','image', 'location', 'promote', 'latitude', 'longitude','online'),
+            'fields': ('name', 'status', 'start', 'finish', 'description', 'facebook_link', 'eventbrite_link', 'other_link', 'category', 'hosting_group','image', 'location', 'promote', 'latitude', 'longitude','online', 'anon_user_token'),
         }),
     ) + VersionedAdmin.fieldsets
 

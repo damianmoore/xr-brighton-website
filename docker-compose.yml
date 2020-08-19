@@ -1,4 +1,4 @@
-version: "2"
+version: '2'
 
 services:
   website:
@@ -10,8 +10,10 @@ services:
       MYSQL_DATABASE: xrbrighton
       MYSQL_USER: root
       MYSQL_PASSWORD: password
+      DB_BACKUP_PATH: /srv/project/static/backups/xrbrighton.sql
     ports:
-      - "8000:80"
+      - '8000:80'
+      # - "8008:8008"
     volumes:
       - ./index.html:/srv/index.html
       - ./system:/srv/system
@@ -27,9 +29,9 @@ services:
     container_name: xr-brighton-mysql
     image: mysql:5.7
     volumes:
-     - ./volumes/mysql:/var/lib/mysql
+      - ./volumes/mysql:/var/lib/mysql
     ports:
-     - "3306:3306"
+      - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: xrbrighton

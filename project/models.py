@@ -64,15 +64,23 @@ class Group(VersionedModel):
     def __str__(self):
         return self.name
 
+
 class EventManager(models.Manager):
     def in_future(self):
-        return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()))
+        return self.get_queryset().filter(status='A').filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()))
 
     def in_past(self):
-        return self.get_queryset().filter(Q(start__lt=timezone.now()) & (Q(finish__isnull=True) | Q(finish__lt=timezone.now())))
+        return self.get_queryset().filter(status='A').filter(Q(start__lt=timezone.now()) & (Q(finish__isnull=True) | Q(finish__lt=timezone.now())))
     
     def in_future_and_current_month(self):
-        return self.get_queryset().filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()) | Q(start__month = timezone.now().month))
+        return self.get_queryset().filter(status='A').filter(Q(start__gte=timezone.now()) | Q(finish__gte=timezone.now()) | Q(start__month = timezone.now().month))
+
+
+EVENT_STATUSES = (
+    ('D', 'Draft'),     # Being worked on
+    ('P', 'Pending'),   # Waiting to be reviewed by an admin
+    ('A', 'Approved'),  # Approved by an admin and published on the site
+)
 
 class Event(VersionedModel):
     name            = models.CharField(max_length=100)
@@ -91,6 +99,8 @@ class Event(VersionedModel):
     eventbrite_link = models.URLField(blank=True, null=True, help_text='Link to Eventbrite event URL')
     other_link      = models.URLField(blank=True, null=True, help_text='Link to any other event page URL')
     online          = models.BooleanField(default=False)
+    status          = models.CharField(max_length=1, choices=EVENT_STATUSES, default=EVENT_STATUSES[0][0])
+    anon_user_token = models.CharField(max_length=64, blank=True, null=True, db_index=True)
 
     objects = EventManager()
 

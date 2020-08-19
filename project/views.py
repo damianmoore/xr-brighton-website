@@ -3,9 +3,11 @@ import re
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.utils.crypto import get_random_string
 import markdown
 import requests
 
+from .forms import EventForm
 from .models import Event, Article, Arrestee, Human, Group
 
 
@@ -80,6 +82,7 @@ def humans_of_xr(request, id=None):
     else:
         return render(request, 'humans-of-xr.html', {'humans': Human.objects.filter()})
 
+
 def group_detail(request, slug):
     group = get_object_or_404(Group,slug=slug)
     events = Event.objects.filter(hosting_group=group.id)
@@ -87,3 +90,27 @@ def group_detail(request, slug):
         'group': group,
         'events': events
     })
+
+
+def events_dashboard(request):
+    anon_user_token = request.COOKIES.get('anon_user_token', None)
+    new_token = False
+    if anon_user_token:
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.cleaned_data['anon_user_token'] = anon_user_token
+            form.save()
+        events = Event.objects.filter(anon_user_token=anon_user_token)
+    else:
+        anon_user_token = get_random_string(length=64)
+        new_token = True
+        events = []
+
+    response = render(request, 'events_dashboard.html', {
+        'events': events,
+        'token': anon_user_token,
+        'form': EventForm,
+    })
+    if new_token:
+        response.set_cookie('anon_user_token', )
+    return response

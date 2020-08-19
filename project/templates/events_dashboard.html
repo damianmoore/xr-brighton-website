@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load cms_tags thumbnail %}
+
+{% block title %}Events Dashboard{% endblock title %}
+
+{% block content %}
+  <article>
+    <div class="hero hero-small"></div>
+    <div class="content">
+      <h1>Events Dashboard</h1>
+      <p>anon_user_token: {{ token }}<br /><br /></p>
+
+      <h2>Your current events</h2>
+      {% if events %}
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+          </tr>
+          {% for event in events %}
+            <tr>
+              <td>{{ event.start|date:"jS M" }}</td>
+              <td>{{ event.name }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      {% else %}
+        <p>There are currently no events that you can edit. Once you have submitted events they will show up here.</p>
+      {% endif %}
+      <p>Your events will no longer show here once the end date has passed, if you use a different device or you clear your browser's cookies.</p>
+      <p>If you want to update an event which doesn't appear here, please make a request in the <a href="https://app.slack.com/client/TFRLWRF4P/CQG55U7A5">#eventspublicity Slack channel</a>.</p>
+
+      <h2>Add new event</h2>
+      <p>Please ensure you double-check all details before submitting this form. Once submitted, your event will be placed in a queue to be approved by our moderators before appearing on the site.
+      <form action="." method="post">
+        {% csrf_token %}
+        <ul>
+          {{ form.as_ul }}
+        </ul>
+        <input type="submit" value="Submit">
+    </form>
+    </div>
+  </article>
+{% endblock content %}
