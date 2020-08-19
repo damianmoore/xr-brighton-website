@@ -76,7 +76,7 @@ main {
 }
 main h1, main h2, main h3, main h4, main h5, main h6 {
   line-height: 1;
-  margin-bottom: 1em;
+  margin: 1.5em 0 1em;
 }
 main p a, main li a {
   text-decoration: none;

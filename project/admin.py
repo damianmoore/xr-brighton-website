@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Event, Article, ArticleSource, Arrestee, Human, HumanImage, Group
+from .models import Category, Event, Article, ArticleSource, Arrestee, Human, HumanImage, Group, Newsletter
 
 
 admin.site.site_header = 'XR Brighton Administration'
@@ -154,3 +154,20 @@ class HumanAdmin(VersionedAdmin):
             'fields': ['name', 'text', 'group'],
         }),
     ) + VersionedAdmin.fieldsets
+
+
+@admin.register(Newsletter)
+class NewsletterAdmin(VersionedAdmin):
+    list_display = ('date_short', 'title')
+    list_ordering = ('-date')
+    search_fields = ('title', 'content')
+
+    fieldsets = (
+        (None, {
+            'fields': ('date', 'title', 'content', 'image'),
+        }),
+    ) + VersionedAdmin.fieldsets
+
+    def date_short(self, obj):
+        return obj.date.strftime("%d %b %Y")
+    date_short.short_description = 'Date'

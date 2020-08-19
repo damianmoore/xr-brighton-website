@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 import markdown
 import requests
 
-from .models import Event, Article, Arrestee, Human, Group
+from .models import Event, Article, Arrestee, Human, Group, Newsletter
 
 
 def event_detail(request, slug):
@@ -87,3 +87,17 @@ def group_detail(request, slug):
         'group': group,
         'events': events
     })
+
+def newsletter(request, slug):
+    newsletter = get_object_or_404(Newsletter, date=slug)
+    recent_newsletters = Newsletter.objects.order_by('-date')[:10]
+
+    return render(request, 'newsletter.html', {
+        'newsletter': newsletter,
+        'recent_newsletters': recent_newsletters,
+    })
+
+def newsletter_redirect(request):
+    newsletter = Newsletter.objects.order_by('-date')[0]
+
+    return HttpResponseRedirect(f'/newsletter/{newsletter.date}/')

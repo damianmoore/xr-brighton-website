@@ -220,3 +220,16 @@ class HumanImage(models.Model):
         null=True, blank=True, on_delete=models.SET_NULL, related_name='human_image')
     landscape = models.BooleanField(default=False)
     human = models.ForeignKey(Human)
+
+
+class Newsletter(VersionedModel):
+    date        = models.DateField()
+    title       = models.CharField(max_length=100, help_text='Do not include date in title')
+    content     = models.TextField()
+    image       = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='newsletter_image')
+
+    class Meta:
+        ordering = ('-date',)
+
+    def __str__(self):
+        return self.title

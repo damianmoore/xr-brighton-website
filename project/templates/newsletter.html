@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load cms_tags thumbnail %}
+
+{% block title %}Newsletter {{ newsletter.date|date:"jS F Y"  }}: {{ newsletter.title }}{% endblock title %}
+{% block og_title %}Newsletter {{ newsletter.date|date:"jS F Y"  }}: {{ newsletter.title }}{% endblock og_title %}
+{% block og_image %}{% if newsletter.image %}https://xrbrighton.earth{% thumbnail newsletter.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image %}
+{% block og_image_secure %}{% if newsletter.image %}https://xrbrighton.earth{% thumbnail newsletter.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock og_image_secure %}
+{% block twitter_title %}Newsletter {{ newsletter.date|date:"jS F Y"  }}: {{ newsletter.title }}{% endblock twitter_title %}
+{% block twitter_image %}{% if newsletter.image %}https://xrbrighton.earth{% thumbnail newsletter.image 1920x1080 quality=60 crop %}{% else %}https://xrbrighton.earth/media/filer_public/8e/e6/8ee612a8-5ff4-4f04-b435-9c4ace4d4255/social.jpg{% endif %}{% endblock twitter_image %}
+
+{% block content %}
+  <article>
+    {% if newsletter.image %}<div class="hero hero-large" style="background-image: url({% thumbnail newsletter.image 1920x960 quality=75 crop %})"></div>{% endif %}
+    <div class="content">
+      <h2>
+        Extinction Rebellion Brighton Newsletter<br />
+        {{ newsletter.date|date:"jS F Y"  }}
+      </h2>
+      <hr />
+      <h1 itemprop="name">{{ newsletter.title }}</h1>
+      {{ newsletter.content|safe }}
+      <br /> <br /><br />
+      <h2>Recent newsletters</h2>
+      <ul>
+        {% for item in recent_newsletters %}
+          <li><a href="/newsletter/{{ item.date|date:"Y-m-d" }}/"><strong>{{ item.date|date:"jS F Y"  }}</strong> — {{ item.title }}<a/></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </article>
+{% endblock content %}

@@ -9,7 +9,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import TemplateView
 from django.views.static import serve
 
-from .views import event_detail, article_detail, arrestee_details, humans_of_xr, group_detail
+from .views import event_detail, article_detail, arrestee_details, humans_of_xr, group_detail, newsletter, newsletter_redirect
 from .sitemaps import CMSSitemap
 
 
@@ -27,6 +27,8 @@ urlpatterns = [
     url(r'^human/(\d+)/$', humans_of_xr),
     url(r'^humans-of-xr/', humans_of_xr),
     url(r'^group/(?P<slug>[\w-]+)/$', group_detail),
+    url(r'^newsletter/(?P<slug>[\w-]+)/', newsletter),
+    url(r'^newsletter/', newsletter_redirect),
     url(r'^', include('cms.urls')),
 ]
 
