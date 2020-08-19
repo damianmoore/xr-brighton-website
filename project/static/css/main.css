@@ -740,7 +740,8 @@ footer ul.links li a {
 {
 	bottom: 5px;
 	color: #21a73d;
-	font-size: 45px;
+  font-size: 45px;
+  line-height: 0.8;
 	margin-bottom: 0;
 	opacity: 30%;
 	position: absolute;
