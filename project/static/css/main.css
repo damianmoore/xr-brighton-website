@@ -430,9 +430,6 @@ header ul.nav-main li a:hover {
 header .social-nav {
   margin: 0 0 0 1em;
 }
-header .donate {
-  margin: 10px 0 10px 1em;
-}
 
 footer {
   background: #000;
@@ -641,13 +638,6 @@ footer ul.links li a {
 .social-nav--mobile a {
   width: 2.8125em;
   height: 2.8125em;
-}
-.nav-mobile .donate {
-  margin-bottom: 1.25em;
-  display: block;
-}
-.nav-mobile .donate input {
-  width: 100%;
 }
 
 .mailinglist-form {
@@ -902,9 +892,6 @@ div.humandetail img.landscape {
   header .page-header__wrap {
     padding: 0 10px;
   }
-  header .donate {
-    margin: 0 0 0 1em;
-  }
   .mailinglist-form input {
     width: 100%;
   }
@@ -951,9 +938,6 @@ div.humandetail img.landscape {
     padding: 0 20px;
   }
   .nav-main {
-    display: none;
-  }
-  .donate--head {
     display: none;
   }
   #hamburger {
