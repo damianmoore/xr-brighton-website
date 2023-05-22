@@ -19,7 +19,7 @@ django-classy-tags>=1.0,<1.1
 html5lib>=1.1,<1.2
 Pillow>=3.0
 django-sekizai>=1.1,<1.2
-requests==2.20.0
+requests==2.31.0
 six
 pytz
 gunicorn
